@@ -8,6 +8,9 @@ const ShipActions = {
   isDestroyed() {
     return this.printed.includes('') ? false : true;
   },
+  toggleIsSunkStatus() {
+    if (!this.isDestroyed()) this.isSunk = true;
+  },
 };
 
 export default (length, positionX, positionY) => {
