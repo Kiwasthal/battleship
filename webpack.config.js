@@ -7,17 +7,22 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  rules: [
-    {
-      test: /\.m?js$/,
-      exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/preset-env'],
-          plugins: ['@babel/plugin-proposal-object-rest-spread'],
-        },
+  loader: {
+    test: /\.m?js$/,
+    exclude: /(node_modules|bower_components)/,
+    use: {
+      loaders: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
       },
     },
-  ],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 };
