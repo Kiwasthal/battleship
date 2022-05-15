@@ -1,8 +1,8 @@
 const ShipActions = {
-  showPositionX() {
+  getPositionX() {
     return this.positionX;
   },
-  showPositionY() {
+  getPositionY() {
     return this.positionY;
   },
   isDestroyed() {
