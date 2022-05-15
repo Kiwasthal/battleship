@@ -9,7 +9,7 @@ const ShipActions = {
     return this.printed.includes('') ? false : true;
   },
   toggleIsSunkStatus() {
-    if (!this.isDestroyed()) this.isSunk = true;
+    if (this.isDestroyed()) this.isSunk = true;
   },
 };
 

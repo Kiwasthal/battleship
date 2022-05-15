@@ -25,4 +25,8 @@ describe('Ship', () => {
   test('default printed position', () => {
     expect(fooShip.printed).toEqual(['', '', '']);
   });
+  it('correctly handles default ship Sinking Status', () => {
+    fooShip.toggleIsSunkStatus();
+    expect(fooShip.isSunk).toBe(false);
+  });
 });
