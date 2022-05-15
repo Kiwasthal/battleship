@@ -29,6 +29,28 @@ let createNumberLabels = (container, className) => {
   container.appendChild(numbersContainer);
 };
 
+let createShipContainer = container => {
+  let openDrawer = document.createElement('div');
+  openDrawer.classList.add('open-drawer');
+  container.appendChild(openDrawer);
+  let shipContainer = document.createElement('div');
+  shipContainer.classList.add('shelf');
+  shipContainer.appendChild(createCarrier());
+  container.appendChild(shipContainer);
+};
+
+let createCarrier = parent => {
+  let carrierContainer = document.createElement('div');
+  carrierContainer.draggable = 'true';
+  carrierContainer.classList.add('carrier');
+  for (let i = 0; i < 5; i++) {
+    let shipCell = document.createElement('div');
+    shipCell.classList.add('ship-cell');
+    carrierContainer.appendChild(shipCell);
+  }
+  return carrierContainer;
+};
+
 let createLabels = container => {
   createLetterLabels(container, 'top-left-letter-index');
   createLetterLabels(container, 'bottom-left-letter-index');
@@ -40,4 +62,5 @@ export default () => {
   let container = document.querySelector('.container');
   createBattleShipHeader(container);
   createLabels(container);
+  createShipContainer(container);
 };
