@@ -110,6 +110,16 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/animations.js":
+/*!***************************!*\
+  !*** ./src/animations.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  animateShelf() {\n    {\n      if (\n        document.querySelector('.open-drawer').classList.contains('slide-open')\n      ) {\n        document.querySelector('.open-drawer').classList.remove('slide-open');\n        document.querySelector('.shelf').classList.remove('shelf-slide-open');\n      } else {\n        document.querySelector('.open-drawer').classList.add('slide-open');\n        document.querySelector('.shelf').classList.add('shelf-slide-open');\n      }\n    }\n  },\n});\n\n\n//# sourceURL=webpack://battleship/./src/animations.js?");
+
+/***/ }),
+
 /***/ "./src/domFunctions.js":
 /*!*****************************!*\
   !*** ./src/domFunctions.js ***!
@@ -120,13 +130,23 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/dragAndDrop.js":
+/*!****************************!*\
+  !*** ./src/dragAndDrop.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  handleDragStart(e) {\n    let dragged = e.target;\n    return dragged;\n  },\n  handleDragEnd(e) {\n    this.style.opacity = '1';\n  },\n  handleDragOver(e) {\n    e.preventDefault();\n    console.log('hey');\n    return false;\n  },\n  handleDragEnter(e) {\n    this.classList.add('over');\n  },\n  handleDragLeave(e) {\n    this.classList.remove('over');\n  },\n  handleDrop(e) {\n    if (\n      e.target.nextSibling.nextSibling &&\n      e.target.previousSibling.previousSibling\n    ) {\n      e.target.classList.add('ship');\n      e.target.style.backgroundColor = 'red';\n      e.target.previousSibling.style.backgroundColor = 'red';\n      e.target.previousSibling.previousSibling.style.backgroundColor = 'red';\n      e.target.nextSibling.style.backgroundColor = 'red';\n      e.target.nextSibling.nextSibling.style.backgroundColor = 'red';\n      carrier.style.display = 'none';\n    }\n  },\n  addCellListeners(cells) {\n    cells.forEach(cell => {\n      cell.addEventListener('dragover', this.handleDragOver);\n      cell.addEventListener('dragenter', this.handleDragEnter);\n      cell.addEventListener('dragleave', this.handleDragLeave);\n      cell.addEventListener('drop', this.handleDrop);\n      console.log(cell);\n    });\n  },\n  addDragAndDropListeners(carrier, cells) {\n    carrier.addEventListener('dragstart', this.handleDragStart);\n    carrier.addEventListener('dragend', this.handleDragEnd);\n    this.addCellListeners(cells);\n  },\n});\n\n\n//# sourceURL=webpack://battleship/./src/dragAndDrop.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _domFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domFunctions */ \"./src/domFunctions.js\");\n/* harmony import */ var _renderGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderGrid */ \"./src/renderGrid.js\");\n\n\n\n\n(0,_domFunctions__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('player-grid');\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('computer-grid');\ndocument.querySelector('.open-drawer').addEventListener('click', () => {\n  if (document.querySelector('.open-drawer').classList.contains('slide-open')) {\n    document.querySelector('.open-drawer').classList.remove('slide-open');\n    document.querySelector('.shelf').classList.remove('shelf-slide-open');\n  } else {\n    document.querySelector('.open-drawer').classList.add('slide-open');\n    document.querySelector('.shelf').classList.add('shelf-slide-open');\n  }\n});\n\nlet carrier = document.querySelector('.carrier');\nlet cells = document.querySelectorAll('.cell');\n\ncarrier.addEventListener('dragstart', handleDragStart);\ncarrier.addEventListener('dragend', handleDragEnd);\n\nfunction handleDragStart(e) {\n  let dragSrcEl = this;\n\n  e.dataTransfer.effectAllowed = 'move';\n  return dragSrcEl;\n}\n\nfunction handleDragEnd(e) {\n  this.style.opacity = '1';\n}\n\nfunction handleDragOver(e) {\n  e.preventDefault();\n  return false;\n}\n\nfunction handleDragEnter(e) {\n  this.classList.add('over');\n}\n\nfunction handleDragLeave(e) {\n  this.classList.remove('over');\n}\n\nfunction handleDrop(e) {\n  if (\n    e.target.nextSibling.nextSibling &&\n    e.target.previousSibling.previousSibling\n  ) {\n    e.target.classList.add('ship');\n    e.target.style.backgroundColor = 'red';\n    e.target.previousSibling.style.backgroundColor = 'red';\n    e.target.previousSibling.previousSibling.style.backgroundColor = 'red';\n    e.target.nextSibling.style.backgroundColor = 'red';\n    e.target.nextSibling.nextSibling.style.backgroundColor = 'red';\n  }\n}\n\ncells.forEach(cell => {\n  cell.addEventListener('dragover', handleDragOver);\n  cell.addEventListener('dragenter', handleDragEnter);\n  cell.addEventListener('dragleave', handleDragLeave);\n  cell.addEventListener('drop', handleDrop);\n});\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _domFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domFunctions */ \"./src/domFunctions.js\");\n/* harmony import */ var _renderGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderGrid */ \"./src/renderGrid.js\");\n/* harmony import */ var _animations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animations */ \"./src/animations.js\");\n/* harmony import */ var _dragAndDrop__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dragAndDrop */ \"./src/dragAndDrop.js\");\n\n\n\n\n\n\n(0,_domFunctions__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('player-grid');\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('computer-grid');\ndocument\n  .querySelector('.open-drawer')\n  .addEventListener('click', _animations__WEBPACK_IMPORTED_MODULE_3__[\"default\"].animateShelf);\n_dragAndDrop__WEBPACK_IMPORTED_MODULE_4__[\"default\"].addDragAndDropListeners(\n  document.querySelector('.carrier'),\n  document.querySelectorAll('.cell')\n);\n\nlet cells = document.querySelectorAll('.cells');\nconsole.log(cells);\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
 
 /***/ }),
 
