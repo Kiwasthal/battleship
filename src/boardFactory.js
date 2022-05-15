@@ -5,7 +5,7 @@ const boardActions = {
   generatesBoardWithShips() {
     generatedBoard = this.board;
     for (let ship of this.shipLibrary)
-      for (x of ship.positionX) board[x][ship.positionY[0]] = 'Ship';
+      for (x of ship.positionX) board[x][ship.positionY[0]] = 'ship';
     return generatedBoard;
   },
   receiveHit(coordinatesOfHit) {
