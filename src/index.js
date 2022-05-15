@@ -14,6 +14,3 @@ dragAndDropHandler.addDragAndDropListeners(
   document.querySelector('.carrier'),
   document.querySelectorAll('.cell')
 );
-
-let cells = document.querySelectorAll('.cells');
-console.log(cells);
