@@ -24,6 +24,33 @@ body {
   text-shadow: 0.5px 0.5px white;
 }
 
+.top-left-letter-index {
+  grid-area: 3 / 2 / 4 / 3;
+  height: 100%;
+  margin: 0;
+  color: #ddd;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.letter-index {
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+  position: relative;
+}
+
+.letter-index::after {
+  content: '';
+  position: absolute;
+  left: -40%;
+  bottom: -10%;
+  height: 2px;
+  width: 220%;
+  background: black;
+}
+
 .player-grid {
   justify-self: center;
   align-self: center;
@@ -33,6 +60,32 @@ body {
   height: 100%;
   transition: all 500ms cubic-bezier(0.63, 0.2, 0.85, 1.58);
   z-index: 1001;
+}
+
+.bottom-left-letter-index {
+  grid-area: 4 / 3 / 5 / 4;
+  height: 100%;
+  margin: 0;
+  color: #ddd;
+  display: grid;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 900;
+}
+
+.bottom-left-letter-index p {
+  padding: 10px;
+  padding-right: 20px;
+}
+
+.bottom-left-letter-index p::after {
+  content: '';
+  position: absolute;
+  left: -40%;
+  bottom: -10%;
+  height: 3px;
+  width: 110%;
+  background: #ddd;
 }
 
 .computer-grid {
