@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n  margin: 0;\\n  height: 100vh;\\n  width: 100vw;\\n}\\n\\n.container {\\n  background-color: #333;\\n  display: grid;\\n  height: 100vh;\\n  width: 100vw;\\n  grid-template-columns: 1fr 2vw 20% 30% 1fr;\\n  grid-template-rows: 1fr 2vh 2vw 33% 50% 1fr;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://battleship/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"body {\\n  margin: 0;\\n  height: 100vh;\\n  width: 100vw;\\n}\\n\\n.container {\\n  background-color: #333;\\n  display: grid;\\n  height: 100vh;\\n  width: 100vw;\\n  grid-template-columns: 1fr 2vw 15% 27% 1fr;\\n  grid-template-rows: auto 2vw 25% 50% 1fr;\\n}\\n\\n.main-header {\\n  align-self: center;\\n  margin: 0;\\n  padding: 5px;\\n  padding-left: 5vw;\\n  font-size: 40px;\\n  color: antiquewhite;\\n  letter-spacing: 0px;\\n  text-shadow: 0.5px 0.5px white;\\n}\\n\\n.player-grid {\\n  justify-self: center;\\n  align-self: center;\\n  grid-area: 3 / 3 / 4 / 4;\\n  display: grid;\\n  width: 100%;\\n  height: 100%;\\n  transition: all 500ms cubic-bezier(0.63, 0.2, 0.85, 1.58);\\n  z-index: 1001;\\n}\\n\\n.computer-grid {\\n  justify-self: center;\\n  align-self: center;\\n  grid-area: 4 / 4 / 5 / 5;\\n  display: grid;\\n  width: 100%;\\n  height: 100%;\\n  transition: all 500ms cubic-bezier(0.63, 0.2, 0.85, 1.58);\\n}\\n\\n.row {\\n  width: 100%;\\n  height: 100%;\\n  background-color: rgb(114, 114, 170);\\n  display: grid;\\n  grid-auto-flow: column;\\n}\\n\\n.cell {\\n  width: 100%;\\n  height: 100%;\\n  background-color: #ddd;\\n  border: 2px solid black;\\n  transition: all 700ms cubic-bezier(0, 2.14, 0.73, 2.14);\\n  display: grid;\\n  justify-content: center;\\n  font-size: 0;\\n  align-items: center;\\n  color: red;\\n  cursor: default;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://battleship/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -110,13 +110,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/domFunctions.js":
+/*!*****************************!*\
+  !*** ./src/domFunctions.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nlet createBattleShipHeader = container => {\n  const battleShipHeader = document.createElement('h2');\n  battleShipHeader.textContent = 'Battleship';\n  battleShipHeader.classList.add('main-header');\n  container.appendChild(battleShipHeader);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  let container = document.querySelector('.container');\n  createBattleShipHeader(container);\n});\n\n\n//# sourceURL=webpack://battleship/./src/domFunctions.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _domFunctions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./domFunctions */ \"./src/domFunctions.js\");\n/* harmony import */ var _renderGrid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./renderGrid */ \"./src/renderGrid.js\");\n\n\n\n\n(0,_domFunctions__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('player-grid');\n(0,_renderGrid__WEBPACK_IMPORTED_MODULE_2__.renderGrid)('computer-grid');\n\n\n//# sourceURL=webpack://battleship/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/renderGrid.js":
+/*!***************************!*\
+  !*** ./src/renderGrid.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"renderGrid\": () => (/* binding */ renderGrid)\n/* harmony export */ });\nlet renderGrid = classList => {\n  let container = document.querySelector('.container');\n  let createGridLeft = document.createElement('div');\n  createGridLeft.classList.add(classList);\n  container.appendChild(createGridLeft);\n  for (let i = 0; i < 10; i++) {\n    let row = document.createElement('div');\n    row.classList.add('row');\n    createGridLeft.appendChild(row);\n    for (let y = 0; y < 10; y++) {\n      let cell = document.createElement('div');\n      cell.dataset.column = y;\n      cell.dataset.row = i;\n      cell.classList.add('cell');\n      row.appendChild(cell);\n    }\n  }\n};\n\n\n\n\n//# sourceURL=webpack://battleship/./src/renderGrid.js?");
 
 /***/ })
 
