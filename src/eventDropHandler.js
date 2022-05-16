@@ -1,4 +1,11 @@
 export default {
+  handleShipDrop(active, e) {
+    this.handleCarrier(active, e);
+    this.handleBattleship(active, e);
+    this.handleCruiser(active, e);
+    this.handleSubmarine(active, e);
+    this.handleDestroyer(active, e);
+  },
   handleCarrier(active, e) {
     if (
       e.target.nextSibling == null ||

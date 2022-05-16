@@ -21,11 +21,8 @@ export default {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
     e.target.classList.remove('over');
-    dropHandler.handleCarrier(active, e);
-    dropHandler.handleBattleship(active, e);
-    dropHandler.handleCruiser(active, e);
-    dropHandler.handleSubmarine(active, e);
-    dropHandler.handleDestroyer(active, e);
+    dropHandler.handleShipDrop(active, e);
+    console.log(e.target);
   },
   addCellListeners(cells) {
     cells.forEach(cell => {
