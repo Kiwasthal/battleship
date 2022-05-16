@@ -5,7 +5,10 @@ const PlayerActions = {
   takeTurn() {},
   generateShipPositions() {
     shipPositionGenerator.registerCarrierInBoard(this.Player);
-    shipPositionGenerator.registerBattleShipInBoard(this.Player);
+    shipPositionGenerator.registerBattleshipInBoard(this.Player);
+    shipPositionGenerator.registerCruiserShipInBoard(this.Player);
+    shipPositionGenerator.registerSubmarineInBoard(this.Player);
+    shipPositionGenerator.registerDestroyerInBoard(this.Player);
   },
 };
 

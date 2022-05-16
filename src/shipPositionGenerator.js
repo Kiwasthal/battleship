@@ -37,10 +37,10 @@ export default {
         'ship';
     }
   },
-  registerBattleShipInBoard(aiPlayer) {
+  registerBattleshipInBoard(aiPlayer) {
     let stopGenerating = true;
     while (stopGenerating) {
-      let battleship = this.generateRandomCoordinates(1, 8);
+      let battleship = this.generateRandomCoordinates(1, 7);
       if (
         battleship.reversed &&
         aiPlayer.board[battleship.startingPostionX][
@@ -49,6 +49,9 @@ export default {
         aiPlayer.board[battleship.startingPostionX + 1][
           battleship.startingPostionY
         ] !== 'ship' &&
+        aiPlayer.board[battleship.startingPostionX + 2][
+          battleship.startingPostionY
+        ] &&
         aiPlayer.board[battleship.startingPostionX - 1][
           battleship.startingPostionY
         ] !== 'ship'
@@ -63,10 +66,198 @@ export default {
           battleship.startingPostionY
         ] = 'ship';
         stopGenerating = false;
+      } else if (
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY + 1
+        ] !== 'ship' &&
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY - 1
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY
+        ] = 'ship';
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY + 1
+        ] = 'ship';
+        aiPlayer.board[battleship.startingPostionX][
+          battleship.startingPostionY - 1
+        ] = 'ship';
+        stopGenerating = false;
       }
     }
   },
-
+  registerCruiserShipInBoard(aiPlayer) {
+    let stopGenerating = true;
+    while (stopGenerating) {
+      let cruiser = this.generateRandomCoordinates(1, 8);
+      if (
+        cruiser.reversed &&
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] !==
+          'ship' &&
+        aiPlayer.board[cruiser.startingPostionX + 1][
+          cruiser.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[cruiser.startingPostionX - 1][
+          cruiser.startingPostionY
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX + 1][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX - 1][cruiser.startingPostionY] =
+          'ship';
+        stopGenerating = false;
+      } else if (
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] !==
+          'ship' &&
+        aiPlayer.board[cruiser.startingPostionX][
+          cruiser.startingPostionY + 1
+        ] !== 'ship' &&
+        aiPlayer.board[cruiser.startingPostionX][
+          cruiser.startingPostionY - 1
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY + 1] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY - 1] =
+          'ship';
+        stopGenerating = false;
+      }
+    }
+  },
+  registerSubmarineInBoard(aiPlayer) {
+    let stopGenerating = true;
+    while (stopGenerating) {
+      let submarine = this.generateRandomCoordinates(1, 8);
+      if (
+        submarine.reversed &&
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[submarine.startingPostionX + 1][
+          submarine.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[submarine.startingPostionX - 1][
+          submarine.startingPostionY
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[submarine.startingPostionX][submarine.startingPostionY] =
+          'ship';
+        aiPlayer.board[submarine.startingPostionX + 1][
+          submarine.startingPostionY
+        ] = 'ship';
+        aiPlayer.board[submarine.startingPostionX - 1][
+          submarine.startingPostionY
+        ] = 'ship';
+        stopGenerating = false;
+      } else if (
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY + 1
+        ] !== 'ship' &&
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY - 1
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[submarine.startingPostionX][submarine.startingPostionY] =
+          'ship';
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY + 1
+        ] = 'ship';
+        aiPlayer.board[submarine.startingPostionX][
+          submarine.startingPostionY - 1
+        ] = 'ship';
+        stopGenerating = false;
+      }
+    }
+  },
+  registerDestroyerInBoard(aiPlayer) {
+    let stopGenerating = true;
+    while (stopGenerating) {
+      let cruiser = this.generateRandomCoordinates(1, 8);
+      if (
+        cruiser.reversed &&
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] !==
+          'ship' &&
+        aiPlayer.board[cruiser.startingPostionX + 1][
+          cruiser.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[cruiser.startingPostionX - 1][
+          cruiser.startingPostionY
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX + 1][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX - 1][cruiser.startingPostionY] =
+          'ship';
+        stopGenerating = false;
+      } else if (
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] !==
+          'ship' &&
+        aiPlayer.board[cruiser.startingPostionX][
+          cruiser.startingPostionY + 1
+        ] !== 'ship' &&
+        aiPlayer.board[cruiser.startingPostionX][
+          cruiser.startingPostionY - 1
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY + 1] =
+          'ship';
+        aiPlayer.board[cruiser.startingPostionX][cruiser.startingPostionY - 1] =
+          'ship';
+        stopGenerating = false;
+      }
+    }
+  },
+  registerSubmarineInBoard(aiPlayer) {
+    let stopGenerating = true;
+    while (stopGenerating) {
+      let destroyer = this.generateRandomCoordinates(0, 8);
+      if (
+        destroyer.reversed &&
+        aiPlayer.board[destroyer.startingPostionX][
+          destroyer.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[destroyer.startingPostionX + 1][
+          destroyer.startingPostionY
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[destroyer.startingPostionX][destroyer.startingPostionY] =
+          'ship';
+        aiPlayer.board[destroyer.startingPostionX + 1][
+          destroyer.startingPostionY
+        ] = 'ship';
+        stopGenerating = false;
+      } else if (
+        aiPlayer.board[destroyer.startingPostionX][
+          destroyer.startingPostionY
+        ] !== 'ship' &&
+        aiPlayer.board[destroyer.startingPostionX][
+          destroyer.startingPostionY + 1
+        ] !== 'ship'
+      ) {
+        aiPlayer.board[destroyer.startingPostionX][destroyer.startingPostionY] =
+          'ship';
+        aiPlayer.board[destroyer.startingPostionX][
+          destroyer.startingPostionY + 1
+        ] = 'ship';
+        stopGenerating = false;
+      }
+    }
+  },
   randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   },
