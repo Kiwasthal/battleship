@@ -12,23 +12,87 @@ export default {
     return false;
   },
   handleDragEnter(e) {
-    this.classList.add('over');
+    let active = document.querySelector('.dragging');
+    if (active.classList.contains('carrier')) {
+      this.classList.add('over');
+      this.nextSibling.classList.add('over');
+      this.nextSibling.nextSibling.classList.add('over');
+      this.previousSibling.classList.add('over');
+      this.previousSibling.previousSibling.classList.add('over');
+    } else if (active.classList.contains('battleship')) {
+      this.classList.add('over');
+      this.nextSibling.classList.add('over');
+      this.nextSibling.nextSibling.classList.add('over');
+      this.previousSibling.classList.add('over');
+    } else if (
+      active.classList.contains('cruiser') ||
+      active.classList.contains('submarine')
+    ) {
+      this.classList.add('over');
+      this.nextSibling.classList.add('over');
+      this.previousSibling.classList.add('over');
+    } else if (active.classList.contains('destroyer')) {
+      this.classList.add('over');
+      this.nextSibling.classList.add('over');
+    }
   },
   handleDragLeave(e) {
-    this.classList.remove('over');
+    let active = document.querySelector('.dragging');
+    if (active.classList.contains('carrier')) {
+      this.classList.remove('over');
+      this.nextSibling.classList.remove('over');
+      this.nextSibling.nextSibling.classList.remove('over');
+      this.previousSibling.classList.remove('over');
+      this.previousSibling.previousSibling.classList.remove('over');
+    } else if (active.classList.contains('battleship')) {
+      this.classList.remove('over');
+      this.nextSibling.classList.remove('over');
+      this.nextSibling.nextSibling.classList.remove('over');
+      this.previousSibling.classList.remove('over');
+    } else if (
+      active.classList.contains('cruiser') ||
+      active.classList.contains('submarine')
+    ) {
+      this.classList.remove('over');
+      this.nextSibling.classList.remove('over');
+      this.previousSibling.classList.remove('over');
+    } else if (active.classList.contains('destroyer')) {
+      this.classList.remove('over');
+      this.nextSibling.classList.remove('over');
+    }
   },
   handleDrop(e) {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
-    e.target.classList.remove('over');
+    if (active.classList.contains('carrier')) {
+      e.target.classList.remove('over');
+      e.target.nextSibling.classList.remove('over');
+      e.target.nextSibling.nextSibling.classList.remove('over');
+      e.target.previousSibling.classList.remove('over');
+      e.target.previousSibling.previousSibling.classList.remove('over');
+    } else if (active.classList.contains('battleship')) {
+      e.target.classList.remove('over');
+      e.target.nextSibling.classList.remove('over');
+      e.target.nextSibling.nextSibling.classList.remove('over');
+      e.target.previousSibling.classList.remove('over');
+    } else if (
+      active.classList.contains('cruiser') ||
+      active.classList.contains('submarine')
+    ) {
+      e.target.classList.remove('over');
+      e.target.nextSibling.classList.remove('over');
+      e.target.previousSibling.classList.remove('over');
+    } else if (active.classList.contains('destroyer')) {
+      e.target.classList.remove('over');
+      e.target.nextSibling.classList.remove('over');
+    }
     dropHandler.handleShipDrop(active, e);
-    console.log(e.target);
   },
   addCellListeners(cells) {
     cells.forEach(cell => {
       cell.addEventListener('dragover', this.handleDragOver);
-      cell.addEventListener('dragenter', this.handleDragEnter);
       cell.addEventListener('dragleave', this.handleDragLeave);
+      cell.addEventListener('dragenter', this.handleDragEnter);
       cell.addEventListener('drop', this.handleDrop);
     });
   },

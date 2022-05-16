@@ -3,6 +3,7 @@ import createDisplay from './domFunctions';
 import { renderGrid } from './renderGrid';
 import animator from './animations';
 import dragAndDropHandler from './dragAndDrop';
+import Player from './Player';
 
 createDisplay();
 renderGrid('player-grid');
@@ -12,5 +13,9 @@ document
   .addEventListener('click', animator.animateShelf);
 dragAndDropHandler.addDragAndDropListeners(
   document.querySelectorAll('.ships'),
-  document.querySelectorAll('.cell')
+  document.querySelectorAll('.playerTile')
 );
+
+let player1 = Player(true, false, 'panos');
+player1.generateShipPositions();
+console.log(player1);

@@ -12,6 +12,7 @@ let renderGrid = classList => {
       cell.dataset.column = y;
       cell.dataset.row = i;
       cell.classList.add('cell');
+      if (classList === 'player-grid') cell.classList.add('playerTile');
       row.appendChild(cell);
     }
   }

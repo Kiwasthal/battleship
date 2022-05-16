@@ -10,7 +10,13 @@ const boardActions = {
     let coordinatesX = coordinatesOfHit[0];
     let coodinatesY = coordinatesOfHit[1];
     this.handlesHit(coordinatesX, coodinatesY);
-    if (this.board[coordinatesX][coodinatesY] === 'ship') {
+    if (
+      this.board[coordinatesX][coodinatesY] === 'carrier' ||
+      this.board[coordinatesX][coodinatesY] == 'battleship' ||
+      this.board[coordinatesX][coodinatesY] == 'cruiser' ||
+      this.board[coordinatesX][coodinatesY] == 'submarine' ||
+      this.board[coordinatesX][coodinatesY] == 'destroyer'
+    ) {
       this.board[coordinatesX][coodinatesY] = 'X';
       for (let ship of this.shipLibrary)
         for (let x of ship.positionX)
