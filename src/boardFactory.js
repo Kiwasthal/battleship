@@ -1,3 +1,5 @@
+import getCoordinates from './getGridCoordinates';
+
 const boardActions = {
   cataloguesShips(...ships) {
     ships.forEach(ship => this.shipLibrary.push(ship));
@@ -39,6 +41,29 @@ const boardActions = {
       this.shipLibrary.length
       ? true
       : false;
+  },
+  getsCoordinatesOfPlacedShipsFromDom() {
+    let carrier = {
+      x: getCoordinates.getCoordinatesX('.carrierPlaced'),
+      y: getCoordinates.getCoordinatesY('.carrierPlaced'),
+    };
+    let battleship = {
+      x: getCoordinates.getCoordinatesX('.battleshipPlaced'),
+      y: getCoordinates.getCoordinatesY('.battleshipPlaced'),
+    };
+    let cruiser = {
+      x: getCoordinates.getCoordinatesX('.cruiserPlaced'),
+      y: getCoordinates.getCoordinatesY('.cruiserPlaced'),
+    };
+    let submarine = {
+      x: getCoordinates.getCoordinatesX('.submarinePlaced'),
+      y: getCoordinates.getCoordinatesY('.submarinePlaced'),
+    };
+    let destroyer = {
+      x: getCoordinates.getCoordinatesX('.destroyerPlaced'),
+      y: getCoordinates.getCoordinatesY('.destroyerPlaced'),
+    };
+    return { carrier, battleship, cruiser, submarine, destroyer };
   },
 };
 

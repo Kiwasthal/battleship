@@ -80,9 +80,9 @@ export default {
     {
       target.classList.add('carrierPlaced', 'taken');
       target.nextSibling.classList.add('carrierPlaced', 'taken');
-      target.nextSibling.nextSibling.classList.add('CarrierPlaced', 'taken');
+      target.nextSibling.nextSibling.classList.add('carrierPlaced', 'taken');
       target.previousSibling.previousSibling.classList.add(
-        'CarrierPlaced',
+        'carrierPlaced',
         'taken'
       );
       target.previousSibling.classList.add('carrierPlaced', 'taken');
@@ -115,17 +115,17 @@ export default {
     active.style.display = 'none';
   },
   placeSubmarine(target, active) {
-    target.classList.add('Submarine', 'taken');
-    target.nextSibling.classList.add('Submarine', 'taken');
-    target.previousSibling.classList.add('Submarine', 'taken');
+    target.classList.add('submarinePlaced', 'taken');
+    target.nextSibling.classList.add('submarinePlaced', 'taken');
+    target.previousSibling.classList.add('submarinePlaced', 'taken');
     target.style.backgroundColor = 'blue';
     target.nextSibling.style.backgroundColor = 'blue';
     target.previousSibling.style.backgroundColor = 'blue';
     active.style.display = 'none';
   },
   placeDestroyer(target, active) {
-    target.classList.add('Destroyer', 'taken');
-    target.nextSibling.classList.add('Destroyer', 'taken');
+    target.classList.add('destroyerPlaced', 'taken');
+    target.nextSibling.classList.add('destroyerPlaced', 'taken');
     target.style.backgroundColor = 'pink';
     target.nextSibling.style.backgroundColor = 'pink';
     active.style.display = 'none';

@@ -1,5 +1,6 @@
 import boardFactory from './boardFactory';
 import shipPositionGenerator from './shipPositionGenerator';
+import getCoordinates from './getGridCoordinates';
 
 const PlayerActions = {
   takeTurn() {},
@@ -10,7 +11,6 @@ const PlayerActions = {
     shipPositionGenerator.registerSubmarineInBoard(this.Gameboard.board);
     shipPositionGenerator.registerDestroyerInBoard(this.Gameboard.board);
   },
-  getShipCoordinatesFromDom() {},
 };
 
 export default (isPlaying, isAi, name) => {

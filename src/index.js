@@ -19,3 +19,11 @@ dragAndDropHandler.addDragAndDropListeners(
 let player1 = Player(true, false, 'panos');
 player1.generateShipPositions();
 console.log(player1);
+
+let button = document.createElement('button');
+document.body.appendChild(button);
+button.textContent = 'play';
+button.addEventListener('click', () => {
+  let ships = player1.Gameboard.getsCoordinatesOfPlacedShipsFromDom();
+  console.log(ships);
+});
