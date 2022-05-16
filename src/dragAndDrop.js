@@ -23,21 +23,9 @@ export default {
     e.target.classList.remove('over');
     dropHandler.handleCarrier(active, e);
     dropHandler.handleBattleship(active, e);
-    // if (active.classList.contains('carrier'))
-    //   if (
-    //     e.target.nextSibling.nextSibling &&
-    //     e.target.previousSibling.previousSibling
-    //   ) {
-    //     e.target.classList.add('ship');
-    //     e.target.style.backgroundColor = 'red';
-    //     e.target.previousSibling.style.backgroundColor = 'red';
-    //     e.target.previousSibling.previousSibling.style.backgroundColor = 'red';
-    //     e.target.nextSibling.style.backgroundColor = 'red';
-    //     e.target.nextSibling.nextSibling.style.backgroundColor = 'red';
-    //     active.style.display = 'none';
-    // } else if (active.classList.contains('cruiser')) {
-    //   if (e.target.nextSibling) {
-    //   }
+    dropHandler.handleCruiser(active, e);
+    dropHandler.handleSubmarine(active, e);
+    dropHandler.handleDestroyer(active, e);
   },
   addCellListeners(cells) {
     cells.forEach(cell => {
@@ -52,8 +40,6 @@ export default {
       ship.addEventListener('dragstart', this.handleDragStart);
       ship.addEventListener('dragend', this.handleDragEnd);
     });
-    // carrier.addEventListener('dragstart', this.handleDragStart);
-    // carrier.addEventListener('dragend', this.handleDragEnd);
     this.addCellListeners(cells);
   },
 };
