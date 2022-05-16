@@ -35,20 +35,25 @@ let createShipContainer = container => {
   container.appendChild(openDrawer);
   let shipContainer = document.createElement('div');
   shipContainer.classList.add('shelf');
-  shipContainer.appendChild(createCarrier());
+  shipContainer.appendChild(createDraggedShips(5, 'carrier'));
+  shipContainer.appendChild(createDraggedShips(4, 'battleship'));
+  shipContainer.appendChild(createDraggedShips(3, 'cruiser'));
+  shipContainer.appendChild(createDraggedShips(3, 'submarine'));
+  shipContainer.appendChild(createDraggedShips(2, 'destroyer'));
   container.appendChild(shipContainer);
 };
 
-let createCarrier = parent => {
-  let carrierContainer = document.createElement('div');
-  carrierContainer.draggable = 'true';
-  carrierContainer.classList.add('carrier');
-  for (let i = 0; i < 5; i++) {
+let createDraggedShips = (length, className) => {
+  let shipContainer = document.createElement('div');
+  shipContainer.draggable = 'true';
+  shipContainer.classList.add(className);
+  shipContainer.classList.add('ships');
+  for (let i = 0; i < length; i++) {
     let shipCell = document.createElement('div');
     shipCell.classList.add('ship-cell');
-    carrierContainer.appendChild(shipCell);
+    shipContainer.appendChild(shipCell);
   }
-  return carrierContainer;
+  return shipContainer;
 };
 
 let createLabels = container => {

@@ -11,6 +11,6 @@ document
   .querySelector('.open-drawer')
   .addEventListener('click', animator.animateShelf);
 dragAndDropHandler.addDragAndDropListeners(
-  document.querySelector('.carrier'),
+  document.querySelectorAll('.ships'),
   document.querySelectorAll('.cell')
 );

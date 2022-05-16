@@ -17,6 +17,7 @@ export default {
     this.classList.remove('over');
   },
   handleDrop(e) {
+    e.preventDefault(e);
     let active = document.querySelector('.dragging');
     e.target.classList.remove('over');
     if (
@@ -40,9 +41,13 @@ export default {
       cell.addEventListener('drop', this.handleDrop);
     });
   },
-  addDragAndDropListeners(carrier, cells) {
-    carrier.addEventListener('dragstart', this.handleDragStart);
-    carrier.addEventListener('dragend', this.handleDragEnd);
+  addDragAndDropListeners(ships, cells) {
+    ships.forEach(ship => {
+      ship.addEventListener('dragstart', this.handleDragStart);
+      ship.addEventListener('dragend', this.handleDragEnd);
+    });
+    // carrier.addEventListener('dragstart', this.handleDragStart);
+    // carrier.addEventListener('dragend', this.handleDragEnd);
     this.addCellListeners(cells);
   },
 };
