@@ -1,3 +1,4 @@
+import dropHandler from './eventDropHandler';
 export default {
   handleDragStart(e) {
     e.target.classList.add('dragging');
@@ -20,18 +21,23 @@ export default {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
     e.target.classList.remove('over');
-    if (
-      e.target.nextSibling.nextSibling &&
-      e.target.previousSibling.previousSibling
-    ) {
-      e.target.classList.add('ship');
-      e.target.style.backgroundColor = 'red';
-      e.target.previousSibling.style.backgroundColor = 'red';
-      e.target.previousSibling.previousSibling.style.backgroundColor = 'red';
-      e.target.nextSibling.style.backgroundColor = 'red';
-      e.target.nextSibling.nextSibling.style.backgroundColor = 'red';
-      active.style.display = 'none';
-    }
+    dropHandler.handleCarrier(active, e);
+    dropHandler.handleBattleship(active, e);
+    // if (active.classList.contains('carrier'))
+    //   if (
+    //     e.target.nextSibling.nextSibling &&
+    //     e.target.previousSibling.previousSibling
+    //   ) {
+    //     e.target.classList.add('ship');
+    //     e.target.style.backgroundColor = 'red';
+    //     e.target.previousSibling.style.backgroundColor = 'red';
+    //     e.target.previousSibling.previousSibling.style.backgroundColor = 'red';
+    //     e.target.nextSibling.style.backgroundColor = 'red';
+    //     e.target.nextSibling.nextSibling.style.backgroundColor = 'red';
+    //     active.style.display = 'none';
+    // } else if (active.classList.contains('cruiser')) {
+    //   if (e.target.nextSibling) {
+    //   }
   },
   addCellListeners(cells) {
     cells.forEach(cell => {
