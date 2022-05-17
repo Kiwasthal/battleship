@@ -28,6 +28,7 @@ const boardActions = {
         for (let x of ship.positionX) {
           for (let y of ship.positionY) {
             if (y == coordinatesY && x == coordinatesX) {
+              console.log(ship);
               ship.printed[ship.positionY.indexOf(y)] = 'X';
               ship.toggleIsSunkStatus();
             }

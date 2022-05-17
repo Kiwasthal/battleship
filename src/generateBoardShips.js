@@ -29,30 +29,36 @@ export default {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().carrier.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().carrier.y;
     let carrier = shipFactory(5, coordinatesX, coordinatesY);
+    if (carrier.positionX.length === 1) carrier.reversed = true;
     return carrier;
   },
   createBattleship() {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().battleship.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().battleship.y;
     let battleship = shipFactory(4, coordinatesX, coordinatesY);
+    if (battleship.positionX.length === 1) battleship.reversed = true;
     return battleship;
   },
   createCruiser() {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().cruiser.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().cruiser.y;
     let cruiser = shipFactory(3, coordinatesX, coordinatesY);
+    if (cruiser.positionX.length === 1) cruiser.reversed = true;
     return cruiser;
   },
   createSubmarine() {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().submarine.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().submarine.y;
     let submarine = shipFactory(3, coordinatesX, coordinatesY);
+    console.log(submarine.positionX);
+    if (submarine.positionX.length === 1) submarine.reversed = true;
     return submarine;
   },
   createDestroyer() {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().destroyer.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().destroyer.y;
     let destroyer = shipFactory(2, coordinatesX, coordinatesY);
+    if (destroyer.positionX.length === 1) destroyer.reversed = true;
     return destroyer;
   },
   createShips() {

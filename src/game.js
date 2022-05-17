@@ -30,6 +30,8 @@ export default (() => {
     player1.Gameboard.fillsBoardWithShips();
     player2.generateShipPositions();
     player2.registerRandomShips();
+    console.log(player1.Gameboard);
+    console.log(player2.Gameboard);
     player1.isPlaying
       ? player1.attackBoard(player2.Gameboard, gameState)
       : player2.takeTurn();
