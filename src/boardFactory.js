@@ -31,9 +31,7 @@ const boardActions = {
               if (ship.reversed) {
                 ship.printed[ship.positionX.indexOf(x)] = 'X';
               } else ship.printed[ship.positionY.indexOf(y)] = 'X';
-              console.log(ship);
               ship.toggleIsSunkStatus();
-              console.log(ship);
             }
           }
         }

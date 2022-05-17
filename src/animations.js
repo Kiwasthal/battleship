@@ -15,11 +15,9 @@ export default {
   animateHitTile(tile) {
     setTimeout(() => tile.classList.add('empty'), 1);
     setTimeout(() => tile.classList.add('hit'), 701);
-    tile.textContent = 'X';
   },
   animateMissTile(tile) {
     setTimeout(() => tile.classList.add('empty'), 1);
     setTimeout(() => tile.classList.add('relax'), 750);
-    tile.textContent = '·';
   },
 };

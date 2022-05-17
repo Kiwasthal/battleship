@@ -13,10 +13,28 @@ const PlayerActions = {
           tile
         );
         if (board.areAllShipsDestroyed()) {
-          console.log('you won');
+          console.log('You Won');
         }
       })
     );
+  },
+  aiAttackBoard(Gameboard) {
+    let attackTiles = document.querySelectorAll('.playerTile');
+    let attackX;
+    let attackY;
+    let attackNode = '';
+    do {
+      attackX = Math.floor(Math.random() * 10);
+      attackY = Math.floor(Math.random() * 10);
+    } while (
+      Gameboard.board[attackX][attackY] == 'miss' ||
+      Gameboard.board[attackX][attackY] == 'X'
+    );
+    attackTiles.forEach(tile => {
+      if (tile.dataset.row == attackX && tile.dataset.column == attackY)
+        attackNode = tile;
+    });
+    Gameboard.receivesHit([attackX, attackY], attackNode);
   },
   generateShipPositions() {
     shipPositionGenerator.registerCarrierInBoard(this.Gameboard.board);
