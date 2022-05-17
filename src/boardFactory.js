@@ -1,29 +1,31 @@
-import getCoordinates from './getGridCoordinates';
+import generateBoardShips from './generateBoardShips';
 
 const boardActions = {
-  cataloguesShips(...ships) {
+  cataloguesShips() {
+    let ships = generateBoardShips.createShips();
     ships.forEach(ship => this.shipLibrary.push(ship));
   },
   fillsBoardWithShips() {
     for (let ship of this.shipLibrary)
-      for (let x of ship.positionX) this.board[x][ship.positionY[0]] = 'ship';
+      for (let y of ship.positionY) this.board[ship.positionX[0]][y] = 'ship';
   },
   receivesHit(coordinatesOfHit) {
     let coordinatesX = coordinatesOfHit[0];
-    let coodinatesY = coordinatesOfHit[1];
-    this.handlesHit(coordinatesX, coodinatesY);
+    let coordinatesY = coordinatesOfHit[1];
+    this.handlesHit(coordinatesX, coordinatesY);
     if (
-      this.board[coordinatesX][coodinatesY] === 'carrier' ||
-      this.board[coordinatesX][coodinatesY] == 'battleship' ||
-      this.board[coordinatesX][coodinatesY] == 'cruiser' ||
-      this.board[coordinatesX][coodinatesY] == 'submarine' ||
-      this.board[coordinatesX][coodinatesY] == 'destroyer'
+      this.board[coordinatesX][coordinatesY] === 'carrier' ||
+      this.board[coordinatesX][coordinatesY] == 'battleship' ||
+      this.board[coordinatesX][coordinatesY] == 'cruiser' ||
+      this.board[coordinatesX][coordinatesY] == 'submarine' ||
+      this.board[coordinatesX][coordinatesY] == 'destroyer' ||
+      this.board[coordinatesX][coordinatesY] == 'ship'
     ) {
-      this.board[coordinatesX][coodinatesY] = 'X';
+      this.board[coordinatesX][coordinatesY] = 'X';
       for (let ship of this.shipLibrary)
-        for (let x of ship.positionX)
-          if (x === coordinatesX && ship.positionY[0] === coodinatesY) {
-            ship.printed[ship.positionX.indexOf(x)] = 'X';
+        for (let y of ship.positionY)
+          if (y == coordinatesY && ship.positionX[0] == coordinatesX) {
+            ship.printed[ship.positionY.indexOf(y)] = 'X';
             ship.toggleIsSunkStatus();
           }
     }
@@ -41,29 +43,6 @@ const boardActions = {
       this.shipLibrary.length
       ? true
       : false;
-  },
-  getsCoordinatesOfPlacedShipsFromDom() {
-    let carrier = {
-      x: getCoordinates.getCoordinatesX('.carrierPlaced'),
-      y: getCoordinates.getCoordinatesY('.carrierPlaced'),
-    };
-    let battleship = {
-      x: getCoordinates.getCoordinatesX('.battleshipPlaced'),
-      y: getCoordinates.getCoordinatesY('.battleshipPlaced'),
-    };
-    let cruiser = {
-      x: getCoordinates.getCoordinatesX('.cruiserPlaced'),
-      y: getCoordinates.getCoordinatesY('.cruiserPlaced'),
-    };
-    let submarine = {
-      x: getCoordinates.getCoordinatesX('.submarinePlaced'),
-      y: getCoordinates.getCoordinatesY('.submarinePlaced'),
-    };
-    let destroyer = {
-      x: getCoordinates.getCoordinatesX('.destroyerPlaced'),
-      y: getCoordinates.getCoordinatesY('.destroyerPlaced'),
-    };
-    return { carrier, battleship, cruiser, submarine, destroyer };
   },
 };
 

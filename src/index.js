@@ -17,13 +17,18 @@ dragAndDropHandler.addDragAndDropListeners(
 );
 
 let player1 = Player(true, false, 'panos');
-player1.generateShipPositions();
 console.log(player1);
 
 let button = document.createElement('button');
 document.body.appendChild(button);
 button.textContent = 'play';
 button.addEventListener('click', () => {
-  let ships = player1.Gameboard.getsCoordinatesOfPlacedShipsFromDom();
-  console.log(ships);
+  player1.Gameboard.cataloguesShips();
+  player1.Gameboard.fillsBoardWithShips();
+  player1.Gameboard.receivesHit([3, 0]);
+  player1.Gameboard.receivesHit([3, 1]);
+  player1.Gameboard.receivesHit([3, 2]);
+  player1.Gameboard.receivesHit([3, 3]);
+  player1.Gameboard.receivesHit([3, 4]);
+  console.log(player1.Gameboard);
 });
