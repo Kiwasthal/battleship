@@ -157,20 +157,26 @@ body {
 
 .empty {
   transform: rotateX(180deg) scaleX(1.2) scaleY(1.7);
-  background: grey;
+  background: grey !important;
   z-index: 1001;
 }
 
-.hit {
-  transform: scale(1) rotateX(-180deg);
-  z-index: 1000;
-  background: rgb(206, 69, 69);
+.registerHit {
+  transform: rotateX(180deg) scaleX(1.2) scaleY(1.7);
+  background: rgb(226, 51, 51) !important;
+  z-index: 1001;
 }
 
 .relax {
-  background: rgb(211, 188, 188);
-  transform: scale(0.97) rotateX(360deg);
+  background: #a3a3a3;
+  transform: scale(0.97) rotateX(360deg) !important;
   z-index: 1000;
+}
+
+.hit {
+  transform: scale(1) rotateX(-180deg) !important;
+  z-index: 1000;
+  background: rgb(206, 69, 69);
 }
 
 .cell.over {
@@ -221,7 +227,6 @@ body {
 .submarine,
 .destroyer {
   display: flex;
-  background-color: red;
   cursor: move;
 }
 
@@ -235,6 +240,37 @@ body {
   transform: translateX(00px);
 }
 
-button {
-  display: none;
+.startGame {
+  grid-area: 4 / 3 / 5 / 4;
+  align-self: flex-start;
+  justify-self: flex-start;
+  background-color: #ddd;
+  margin-top: 10px;
+  border-radius: 10px;
+  width: 30%;
+  padding: 2%;
+  display: block;
+  transform: scale(0);
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background-color: #333;
+  border: 3px solid #ddd;
+  color: #ddd;
+  transition: all 300ms ease-in-out;
+}
+
+.startGame:hover {
+  background-color: #ddd;
+  color: #333;
+  transform: scale(1.1);
+}
+
+.scaleNormal {
+  transform: scale(1);
+}
+
+.minify {
+  transform: scale(0);
 }

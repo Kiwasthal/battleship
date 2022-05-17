@@ -13,7 +13,7 @@ export default {
     }
   },
   animateHitTile(tile) {
-    setTimeout(() => tile.classList.add('empty'), 1);
+    setTimeout(() => tile.classList.add('registerHit'), 1);
     setTimeout(() => tile.classList.add('hit'), 701);
   },
   animateMissTile(tile) {

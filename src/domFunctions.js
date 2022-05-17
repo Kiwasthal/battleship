@@ -63,9 +63,17 @@ let createLabels = container => {
   createNumberLabels(container, 'bottom-number-index');
 };
 
+let createButton = container => {
+  let button = document.createElement('button');
+  button.classList.add('startGame');
+  button.textContent = 'Start';
+  container.appendChild(button);
+};
+
 export default () => {
   let container = document.querySelector('.container');
   createBattleShipHeader(container);
   createLabels(container);
   createShipContainer(container);
+  createButton(container);
 };

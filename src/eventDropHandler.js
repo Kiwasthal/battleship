@@ -86,11 +86,11 @@ export default {
         'taken'
       );
       target.previousSibling.classList.add('carrierPlaced', 'taken');
-      target.style.backgroundColor = 'red';
-      target.previousSibling.style.backgroundColor = 'red';
-      target.previousSibling.previousSibling.style.backgroundColor = 'red';
-      target.nextSibling.style.backgroundColor = 'red';
-      target.nextSibling.nextSibling.style.backgroundColor = 'red';
+      target.style.background = 'yellow';
+      target.previousSibling.style.background = 'yellow';
+      target.previousSibling.previousSibling.style.background = 'yellow';
+      target.nextSibling.style.background = 'yellow';
+      target.nextSibling.nextSibling.style.background = 'yellow';
       active.style.display = 'none';
     }
     this.checkIfAllShipsPlaced();
@@ -100,10 +100,10 @@ export default {
     target.nextSibling.classList.add('battleshipPlaced', 'taken');
     target.nextSibling.nextSibling.classList.add('battleshipPlaced', 'taken');
     target.previousSibling.classList.add('battleshipPlaced', 'taken');
-    target.style.backgroundColor = 'purple';
-    target.nextSibling.style.backgroundColor = 'purple';
-    target.nextSibling.nextSibling.style.backgroundColor = 'purple';
-    target.previousSibling.style.backgroundColor = 'purple';
+    target.style.background = 'purple';
+    target.nextSibling.style.background = 'purple';
+    target.nextSibling.nextSibling.style.background = 'purple';
+    target.previousSibling.style.background = 'purple';
     active.style.display = 'none';
     this.checkIfAllShipsPlaced();
   },
@@ -111,9 +111,9 @@ export default {
     target.classList.add('cruiserPlaced', 'taken');
     target.nextSibling.classList.add('cruiserPlaced', 'taken');
     target.previousSibling.classList.add('cruiserPlaced', 'taken');
-    target.style.backgroundColor = 'green';
-    target.nextSibling.style.backgroundColor = 'green';
-    target.previousSibling.style.backgroundColor = 'green';
+    target.style.background = 'green';
+    target.nextSibling.style.background = 'green';
+    target.previousSibling.style.background = 'green';
     active.style.display = 'none';
     this.checkIfAllShipsPlaced();
   },
@@ -121,17 +121,17 @@ export default {
     target.classList.add('submarinePlaced', 'taken');
     target.nextSibling.classList.add('submarinePlaced', 'taken');
     target.previousSibling.classList.add('submarinePlaced', 'taken');
-    target.style.backgroundColor = 'blue';
-    target.nextSibling.style.backgroundColor = 'blue';
-    target.previousSibling.style.backgroundColor = 'blue';
+    target.style.background = 'blue';
+    target.nextSibling.style.background = 'blue';
+    target.previousSibling.style.background = 'blue';
     active.style.display = 'none';
     this.checkIfAllShipsPlaced();
   },
   placeDestroyer(target, active) {
     target.classList.add('destroyerPlaced', 'taken');
     target.nextSibling.classList.add('destroyerPlaced', 'taken');
-    target.style.backgroundColor = 'pink';
-    target.nextSibling.style.backgroundColor = 'pink';
+    target.style.background = 'pink';
+    target.nextSibling.style.background = 'pink';
     active.style.display = 'none';
     this.checkIfAllShipsPlaced();
   },
@@ -148,8 +148,8 @@ export default {
       cruiser.style.display === 'none' &&
       destroyer.style.display === 'none'
     ) {
-      let button = document.querySelector('button');
-      button.style.display = 'block';
+      let button = document.querySelector('.startGame');
+      button.classList.add('scaleNormal');
     }
   },
 };
