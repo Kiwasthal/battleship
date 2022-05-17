@@ -234,3 +234,7 @@ body {
 .shelf-slide-open {
   transform: translateX(00px);
 }
+
+button {
+  display: none;
+}

@@ -3,20 +3,24 @@ import shipPositionGenerator from './shipPositionGenerator';
 import randomShipGenerator from './createShipsFromRandomBoard';
 
 const PlayerActions = {
-  attackBoard(board) {
+  attackBoard(board, otherBoard) {
     let attackTiles = document.querySelectorAll('.computerTile');
     attackTiles.forEach(tile =>
-      tile.addEventListener('click', e => {
-        let tile = e.target;
-        board.receivesHit(
-          [parseInt(e.target.dataset.row), parseInt(e.target.dataset.column)],
-          tile
-        );
-        if (board.areAllShipsDestroyed()) {
-          console.log('You Won');
-        }
-      })
+      tile.addEventListener(
+        'click',
+        function () {
+          board.receivesHit(
+            [parseInt(this.dataset.row), parseInt(this.dataset.column)],
+            this
+          );
+        },
+        { once: true },
+        this
+      )
     );
+    if (board.areAllShipsDestroyed()) console.log('You Won');
+    if (otherBoard == null) return;
+    this.aiAttackBoard(otherBoard);
   },
   aiAttackBoard(Gameboard) {
     let attackTiles = document.querySelectorAll('.playerTile');

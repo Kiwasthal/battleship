@@ -93,6 +93,7 @@ export default {
       target.nextSibling.nextSibling.style.backgroundColor = 'red';
       active.style.display = 'none';
     }
+    this.checkIfAllShipsPlaced();
   },
   placeBattleship(target, active) {
     target.classList.add('battleshipPlaced', 'taken');
@@ -104,6 +105,7 @@ export default {
     target.nextSibling.nextSibling.style.backgroundColor = 'purple';
     target.previousSibling.style.backgroundColor = 'purple';
     active.style.display = 'none';
+    this.checkIfAllShipsPlaced();
   },
   placeCruiser(target, active) {
     target.classList.add('cruiserPlaced', 'taken');
@@ -113,6 +115,7 @@ export default {
     target.nextSibling.style.backgroundColor = 'green';
     target.previousSibling.style.backgroundColor = 'green';
     active.style.display = 'none';
+    this.checkIfAllShipsPlaced();
   },
   placeSubmarine(target, active) {
     target.classList.add('submarinePlaced', 'taken');
@@ -122,6 +125,7 @@ export default {
     target.nextSibling.style.backgroundColor = 'blue';
     target.previousSibling.style.backgroundColor = 'blue';
     active.style.display = 'none';
+    this.checkIfAllShipsPlaced();
   },
   placeDestroyer(target, active) {
     target.classList.add('destroyerPlaced', 'taken');
@@ -129,5 +133,23 @@ export default {
     target.style.backgroundColor = 'pink';
     target.nextSibling.style.backgroundColor = 'pink';
     active.style.display = 'none';
+    this.checkIfAllShipsPlaced();
+  },
+  checkIfAllShipsPlaced() {
+    let carrier = document.querySelector('.carrier');
+    let battleship = document.querySelector('.carrier');
+    let cruiser = document.querySelector('.cruiser');
+    let submarine = document.querySelector('.submarine');
+    let destroyer = document.querySelector('.destroyer');
+    if (
+      carrier.style.display === 'none' &&
+      battleship.style.display === 'none' &&
+      submarine.style.display === 'none' &&
+      cruiser.style.display === 'none' &&
+      destroyer.style.display === 'none'
+    ) {
+      let button = document.querySelector('button');
+      button.style.display = 'block';
+    }
   },
 };

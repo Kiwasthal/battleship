@@ -5,11 +5,6 @@ import animator from './animations';
 import dragAndDropHandler from './dragAndDrop';
 
 export default (() => {
-  console.log(Math.floor(Math.random() * 10));
-  console.log(Math.floor(Math.random() * 10));
-  console.log(Math.floor(Math.random() * 10));
-  console.log(Math.floor(Math.random() * 10));
-  console.log(Math.floor(Math.random() * 10));
   const onStartUp = () => {
     createDisplay();
     renderGrid('player-grid');
@@ -23,23 +18,26 @@ export default (() => {
     );
   };
   onStartUp();
-  let gameState = true;
   let player1 = Player(true, false, 'captain');
   let player2 = Player(true, false, 'ai');
 
   let button = document.createElement('button');
   document.body.appendChild(button);
   button.textContent = 'START';
-  button.addEventListener('click', () => {
+  button.addEventListener('click', e => {
     player1.Gameboard.cataloguesShips();
     player1.Gameboard.fillsBoardWithShips();
     player2.generateShipPositions();
     player2.registerRandomShips();
+    player1.attackBoard(player2.Gameboard, null);
     document.querySelectorAll('.computerTile').forEach(tile => {
-      tile.addEventListener('click', () => {
-        player1.attackBoard(player2.Gameboard, gameState);
-        player2.aiAttackBoard(player1.Gameboard);
-      });
+      tile.addEventListener(
+        'click',
+        e => {
+          player1.attackBoard(player2.Gameboard, player1.Gameboard);
+        },
+        { once: true }
+      );
     });
   });
 })();
