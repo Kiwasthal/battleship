@@ -13,6 +13,7 @@ let renderGrid = classList => {
       cell.dataset.row = i;
       cell.classList.add('cell');
       if (classList === 'player-grid') cell.classList.add('playerTile');
+      if (classList === 'computer-grid') cell.classList.add('computerTile');
       row.appendChild(cell);
     }
   }
