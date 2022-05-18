@@ -1,6 +1,5 @@
 export default {
-  handleReverse(active, e) {
-    console.log(active);
+  mapActive(active, e) {
     let attX = parseInt(e.target.getAttribute('data-row'));
     let attY = parseInt(e.target.getAttribute('data-column'));
     let nodePrevious = document.querySelector(
@@ -15,12 +14,11 @@ export default {
     let nodeAfterNext = document.querySelector(
       `[data-row="${attX + 2}"][data-column="${attY}"]`
     );
-    let nodesAround = [
-      nodeBeforePrevious,
-      nodePrevious,
-      nodeNext,
-      nodeAfterNext,
-    ];
+    return [nodeBeforePrevious, nodePrevious, nodeNext, nodeAfterNext];
+  },
+
+  handleReverse(active, e) {
+    let nodesAround = this.mapActive(active, e);
     if (active.classList.contains('carrier'))
       if (!nodesAround.includes(null))
         nodesAround.map(node => node.classList.remove('over'));
@@ -115,6 +113,54 @@ export default {
       e.target.style.background = 'pink';
       e.target.classList.add('destroyerPlaced', 'taken');
       active.style.display = 'none';
+    }
+  },
+  handleReverseHoversAdd(active, e) {
+    console.log('enter', e.target);
+    this.handleReverseHoversRemove(active, e);
+    e.target.classList.add('over');
+    let nodesAround = this.mapActive(active, e);
+    if (active.classList.contains('carrier')) {
+      if (nodesAround.includes(null)) return;
+      nodesAround.map(node => node.classList.add('over'));
+    }
+    if (active.classList.contains('battleship')) {
+      if (nodesAround.slice(1, 4).includes(null)) return;
+      nodesAround.slice(1, 4).map(node => node.classList.add('over'));
+    }
+    if (
+      active.classList.contains('cruiser') ||
+      active.classList.contains('submarine')
+    ) {
+      if (nodesAround.slice(1, 3).includes(null)) return;
+      nodesAround.slice(1, 3).map(node => node.classList.add('over'));
+    }
+    if (active.classList.contains('destroyer')) {
+      if (nodesAround.slice(2, 3).includes(null)) return;
+      nodesAround.slice(2, 3).map(node => node.classList.add('over'));
+    }
+  },
+  handleReverseHoversRemove(active, e) {
+    console.log('left', e.target);
+    let nodesAround = this.mapActive(active, e);
+    if (active.classList.contains('carrier')) {
+      if (nodesAround.includes(null)) return;
+      nodesAround.map(node => node.classList.remove('over'));
+    }
+    if (active.classList.contains('battleship')) {
+      if (nodesAround.slice(1, 4).includes(null)) return;
+      nodesAround.slice(1, 4).map(node => node.classList.remove('over'));
+    }
+    if (
+      active.classList.contains('cruiser') ||
+      active.classList.contains('submarine')
+    ) {
+      if (nodesAround.slice(1, 3).includes(null)) return;
+      nodesAround.slice(1, 3).map(node => node.classList.remove('over'));
+    }
+    if (active.classList.contains('destroyer')) {
+      if (nodesAround.slice(2, 3).includes(null)) return;
+      nodesAround.slice(2, 3).map(node => node.classList.remove('over'));
     }
   },
 };

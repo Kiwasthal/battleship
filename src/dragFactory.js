@@ -11,6 +11,7 @@ function Drag(subject) {
   dative.styleHandle(subject);
 
   subject.addEventListener('dragstart', function (e) {
+    document.querySelector('.reverseShip').classList.remove('minify');
     handle = dative.makeHandle(subject);
 
     dragClickOffsetX = e.layerX;
@@ -78,7 +79,7 @@ function Drag(subject) {
       if (madeDrop('submarinePlaced')) this.style.display = 'none';
     if (subject.classList.contains('destroyer'))
       if (madeDrop('destroyerPlaced')) this.style.display = 'none';
-
+    document.querySelector('.reverseShip').classList.add('minify');
     handle.parentNode.removeChild(handle);
   });
 }
