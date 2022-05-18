@@ -10,7 +10,9 @@ export default {
     e.target.classList.remove('dragging');
   },
   handleDragOver(e) {
+    let active = document.querySelector('.dragging');
     e.preventDefault();
+    dropHandler.handleHoverAdd(active, e);
     return false;
   },
   handleDragEnter(e) {

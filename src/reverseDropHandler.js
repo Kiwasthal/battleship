@@ -117,7 +117,6 @@
 //     }
 //   },
 //   handleReverseHoversAdd(active, e) {
-//     console.log('enter', e.target);
 //     this.handleReverseHoversRemove(active, e);
 //     e.target.classList.add('over');
 //     let nodesAround = this.mapActive(active, e);
@@ -142,7 +141,6 @@
 //     }
 //   },
 //   handleReverseHoversRemove(active, e) {
-//     console.log('left', e.target);
 //     let nodesAround = this.mapActive(active, e);
 //     if (active.classList.contains('carrier')) {
 //       if (nodesAround.includes(null)) return;

@@ -148,7 +148,6 @@ export default {
     }
   },
   handleHoverAdd(active, e) {
-    console.log('enter', e.target);
     e.target.classList.add('over');
     let nodesAround = this.mapActive(active, e);
     if (active.classList.contains('carrier')) {
