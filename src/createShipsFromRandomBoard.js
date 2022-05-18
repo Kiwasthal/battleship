@@ -23,47 +23,20 @@ export default {
     });
     return coordinatesY;
   },
-  registerRandomCarrier(board, check) {
+  getRandomShip(length, board, check) {
     let coordinatesX = this.getCoordinatesX(board, check);
     let coordinatesY = this.getCoordinatesY(board, check);
-    let carrier = shipFactory(5, coordinatesX, coordinatesY);
-    if (carrier.positionY.length === 1) carrier.reversed = true;
-    return carrier;
+    let ship = shipFactory(length, coordinatesX, coordinatesY);
+    if (ship.positionY.length === 1) ship.reversed = true;
+    return ship;
   },
-  registerRandomBattleship(board, check) {
-    let coordinatesX = this.getCoordinatesX(board, check);
-    let coordinatesY = this.getCoordinatesY(board, check);
-    let battleship = shipFactory(4, coordinatesX, coordinatesY);
-    if (battleship.positionY.length === 1) battleship.reversed = true;
-    return battleship;
-  },
-  registerRandomCruiser(board, check) {
-    let coordinatesX = this.getCoordinatesX(board, check);
-    let coordinatesY = this.getCoordinatesY(board, check);
-    let cruiser = shipFactory(3, coordinatesX, coordinatesY);
-    if (cruiser.positionY.length === 1) cruiser.reversed = true;
-    return cruiser;
-  },
-  registerRandomSubmarine(board, check) {
-    let coordinatesX = this.getCoordinatesX(board, check);
-    let coordinatesY = this.getCoordinatesY(board, check);
-    let submarine = shipFactory(3, coordinatesX, coordinatesY);
-    if (submarine.positionY.length === 1) submarine.reversed = true;
-    return submarine;
-  },
-  registerRandomDestroyer(board, check) {
-    let coordinatesX = this.getCoordinatesX(board, check);
-    let coordinatesY = this.getCoordinatesY(board, check);
-    let destroyer = shipFactory(2, coordinatesX, coordinatesY);
-    if (destroyer.positionY.length === 1) destroyer.reversed = true;
-    return destroyer;
-  },
+
   registerRandomShips(board) {
-    let carrier = this.registerRandomCarrier(board, 'carrier');
-    let battleship = this.registerRandomBattleship(board, 'battleship');
-    let cruiser = this.registerRandomCruiser(board, 'cruiser');
-    let submarine = this.registerRandomSubmarine(board, 'submarine');
-    let destroyer = this.registerRandomDestroyer(board, 'destroyer');
+    let carrier = this.getRandomShip(5, board, 'carrier');
+    let battleship = this.getRandomShip(4, board, 'battleship');
+    let cruiser = this.getRandomShip(3, board, 'cruiser');
+    let submarine = this.getRandomShip(3, board, 'submarine');
+    let destroyer = this.getRandomShip(2, board, 'destroyer');
     return [carrier, battleship, cruiser, submarine, destroyer];
   },
 };
