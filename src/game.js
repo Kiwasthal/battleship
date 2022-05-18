@@ -17,8 +17,12 @@ export default (() => {
       document.querySelectorAll('.playerTile')
     );
   };
-
   onStartUp();
+
+  document.querySelector('.reverseShip').addEventListener('dragenter', () => {
+    document.querySelector('.dragging').classList.toggle('reversed');
+  });
+
   let player1 = Player(true, false, 'captain');
   let player2 = Player(true, false, 'ai');
 

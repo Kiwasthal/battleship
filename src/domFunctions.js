@@ -45,6 +45,9 @@ let createShipContainer = container => {
 
 let createDraggedShips = (length, className) => {
   let shipContainer = document.createElement('div');
+  let inner = document.createElement('div');
+  inner.classList.add('inner');
+  shipContainer.appendChild(inner);
   shipContainer.draggable = 'true';
   shipContainer.classList.add(className);
   shipContainer.classList.add('ships');
@@ -70,10 +73,18 @@ let createButton = container => {
   container.appendChild(button);
 };
 
+let createReverseButton = container => {
+  let reverseButton = document.createElement('button');
+  reverseButton.classList.add('reverseShip');
+  reverseButton.textContent = 'REVERSE';
+  container.appendChild(reverseButton);
+};
+
 export default () => {
   let container = document.querySelector('.container');
   createBattleShipHeader(container);
   createLabels(container);
   createShipContainer(container);
   createButton(container);
+  createReverseButton(container);
 };

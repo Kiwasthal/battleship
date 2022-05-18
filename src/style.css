@@ -230,6 +230,10 @@ body {
   cursor: move;
 }
 
+.reversed {
+  transform: rotate(90deg);
+}
+
 .ship-cell {
   width: 32.2px;
   height: 29px;
@@ -238,6 +242,26 @@ body {
 
 .shelf-slide-open {
   transform: translateX(00px);
+}
+
+.reverseShip {
+  grid-area: 4 / 3 / 5 / 4;
+  justify-self: center;
+  align-self: flex-start;
+  background-color: #ddd;
+  margin-top: 10px;
+  padding: 2%;
+  transform: scale(0);
+  width: 40%;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background-color: #333;
+  border: 3px solid #ddd;
+  color: #ddd;
+  display: block;
+  transition: all 300ms ease-in-out;
+  border-radius: 10px;
 }
 
 .startGame {
@@ -273,4 +297,8 @@ body {
 
 .minify {
   transform: scale(0);
+}
+
+.red {
+  background: red;
 }

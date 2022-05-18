@@ -1,7 +1,10 @@
 import dropHandler from './eventDropHandler';
+import reverseDropHandler from './reverseDropHandler';
+
 export default {
   handleDragStart(e) {
     e.target.classList.add('dragging');
+    document.querySelector('.reverseShip').classList.add('scaleNormal');
   },
   handleDragEnd(e) {
     this.style.opacity = '1';
@@ -98,46 +101,51 @@ export default {
   handleDrop(e) {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
-    if (active.classList.contains('carrier')) {
-      if (
-        e.target.nextSibling != null &&
-        e.target.nextSibling.nextSibling != null &&
-        e.target.previousSibling != null &&
-        e.target.previousSibling.previousSibling != null
+    if (active.classList.contains('reversed')) {
+      reverseDropHandler.handleReverse(active, e);
+    } else {
+      if (active.classList.contains('carrier')) {
+        if (
+          e.target.nextSibling != null &&
+          e.target.nextSibling.nextSibling != null &&
+          e.target.previousSibling != null &&
+          e.target.previousSibling.previousSibling != null
+        ) {
+          e.target.classList.remove('over');
+          e.target.nextSibling.classList.remove('over');
+          e.target.nextSibling.nextSibling.classList.remove('over');
+          e.target.previousSibling.classList.remove('over');
+          e.target.previousSibling.previousSibling.classList.remove('over');
+        }
+      } else if (active.classList.contains('battleship')) {
+        if (
+          e.target.nextSibling != null &&
+          e.target.nextSibling.nextSibling != null &&
+          e.target.previousSibling != null
+        ) {
+          e.target.classList.remove('over');
+          e.target.nextSibling.classList.remove('over');
+          e.target.nextSibling.nextSibling.classList.remove('over');
+          e.target.previousSibling.classList.remove('over');
+        }
+      } else if (
+        active.classList.contains('cruiser') ||
+        active.classList.contains('submarine')
       ) {
-        e.target.classList.remove('over');
-        e.target.nextSibling.classList.remove('over');
-        e.target.nextSibling.nextSibling.classList.remove('over');
-        e.target.previousSibling.classList.remove('over');
-        e.target.previousSibling.previousSibling.classList.remove('over');
+        if (e.target.nextSibling != null && e.target.previousSibling != null) {
+          e.target.classList.remove('over');
+          e.target.nextSibling.classList.remove('over');
+          e.target.previousSibling.classList.remove('over');
+        }
+      } else if (active.classList.contains('destroyer')) {
+        if (e.target.nextSibling != null) {
+          e.target.classList.remove('over');
+          e.target.nextSibling.classList.remove('over');
+        }
       }
-    } else if (active.classList.contains('battleship')) {
-      if (
-        e.target.nextSibling != null &&
-        e.target.nextSibling.nextSibling != null &&
-        e.target.previousSibling != null
-      ) {
-        e.target.classList.remove('over');
-        e.target.nextSibling.classList.remove('over');
-        e.target.nextSibling.nextSibling.classList.remove('over');
-        e.target.previousSibling.classList.remove('over');
-      }
-    } else if (
-      active.classList.contains('cruiser') ||
-      active.classList.contains('submarine')
-    ) {
-      if (e.target.nextSibling != null && e.target.previousSibling != null) {
-        e.target.classList.remove('over');
-        e.target.nextSibling.classList.remove('over');
-        e.target.previousSibling.classList.remove('over');
-      }
-    } else if (active.classList.contains('destroyer')) {
-      if (e.target.nextSibling != null) {
-        e.target.classList.remove('over');
-        e.target.nextSibling.classList.remove('over');
-      }
+      dropHandler.handleShipDrop(active, e);
+      document.querySelector('.reverseShip').classList.remove('scaleNormal');
     }
-    dropHandler.handleShipDrop(active, e);
   },
   addCellListeners(cells) {
     cells.forEach(cell => {
@@ -149,7 +157,7 @@ export default {
   },
   addDragAndDropListeners(ships, cells) {
     ships.forEach(ship => {
-      ship.addEventListener('dragstart', this.handleDragStart);
+      ship.addEventListener('dragstart', this.handleDragStart, false);
       ship.addEventListener('dragend', this.handleDragEnd);
     });
     this.addCellListeners(cells);
