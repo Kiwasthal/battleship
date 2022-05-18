@@ -101,6 +101,7 @@ export default {
   handleDrop(e) {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
+    active.style.display = 'none';
     if (active.classList.contains('reversed')) {
       reverseDropHandler.handleReverse(active, e);
     } else {

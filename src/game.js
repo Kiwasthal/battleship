@@ -3,6 +3,7 @@ import createDisplay from './domFunctions';
 import { renderGrid } from './renderGrid';
 import animator from './animations';
 import dragAndDropHandler from './dragAndDrop';
+import createDragElements from './dragFactory';
 
 export default (() => {
   const onStartUp = () => {
@@ -16,8 +17,11 @@ export default (() => {
       document.querySelectorAll('.ships'),
       document.querySelectorAll('.playerTile')
     );
+    createDragElements();
   };
   onStartUp();
+
+  //--------------------------------------------------------------------------
 
   document.querySelector('.reverseShip').addEventListener('dragenter', () => {
     document.querySelector('.dragging').classList.toggle('reversed');

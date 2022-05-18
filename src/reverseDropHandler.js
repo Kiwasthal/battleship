@@ -41,6 +41,7 @@ export default {
       nodesAround.slice(2, 3).map(node => node.classList.remove('over'));
     }
     this.handleReverseShipPlacement(active, e, nodesAround);
+
     document.querySelector('.reverseShip').classList.remove('scaleNormal');
   },
   handleReverseShipPlacement(active, e, nodesAround) {
@@ -57,6 +58,7 @@ export default {
       });
       e.target.style.background = 'yellow';
       e.target.classList.add('carrierPlaced', 'taken');
+      active.style.display = 'none';
     }
     if (active.classList.contains('battleship')) {
       if (nodesAround.slice(1, 4).includes(null)) return;
@@ -70,6 +72,7 @@ export default {
       });
       e.target.style.background = 'purple';
       e.target.classList.add('battleshipPlaced', 'taken');
+      active.style.display = 'none';
     }
     if (active.classList.contains('cruiser')) {
       if (nodesAround.slice(1, 3).includes(null)) return;
@@ -83,6 +86,7 @@ export default {
       });
       e.target.style.background = 'green';
       e.target.classList.add('cruiserPlaced', 'taken');
+      active.style.display = 'none';
     }
     if (active.classList.contains('submarine')) {
       if (nodesAround.slice(1, 3).includes(null)) return;
@@ -96,6 +100,7 @@ export default {
       });
       e.target.style.background = 'blue';
       e.target.classList.add('submarinePlaced', 'taken');
+      active.style.display = 'none';
     }
     if (active.classList.contains('destroyer')) {
       if (nodesAround.slice(2, 3).includes(null)) return;
@@ -109,6 +114,7 @@ export default {
       });
       e.target.style.background = 'pink';
       e.target.classList.add('destroyerPlaced', 'taken');
+      active.style.display = 'none';
     }
   },
 };
