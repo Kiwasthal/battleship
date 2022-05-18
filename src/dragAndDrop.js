@@ -16,24 +16,18 @@ export default {
   },
   handleDragEnter(e) {
     let active = document.querySelector('.dragging');
-    if (active.classList.contains('reversed'))
-      reverseDropHandler.handleReverseHoversAdd(active, e);
-    else dropHandler.handleHoverAdd(active, e);
+    dropHandler.handleHoverAdd(active, e);
     e.target.classList.add('hover');
   },
   handleDragLeave(e) {
     let active = document.querySelector('.dragging');
-    if (active.classList.contains('reversed'))
-      reverseDropHandler.handleReverseHoversRemove(active, e);
-    else dropHandler.handleHoversRemove(active, e);
+    dropHandler.handleHoversRemove(active, e);
     e.target.classList.remove('over');
   },
   handleDrop(e) {
     e.preventDefault(e);
     let active = document.querySelector('.dragging');
-    if (active.classList.contains('reversed'))
-      reverseDropHandler.handleReverse(active, e);
-    else dropHandler.handle(active, e);
+    dropHandler.handleShip(active, e);
     e.target.classList.remove('over');
     dropHandler.checkIfAllShipsPlaced();
     document.querySelector('.reverseShip').classList.remove('scaleNormal');

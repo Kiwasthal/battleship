@@ -2,21 +2,37 @@ export default {
   mapActive(active, e) {
     let attX = parseInt(e.target.getAttribute('data-row'));
     let attY = parseInt(e.target.getAttribute('data-column'));
-    let nodePrevious = document.querySelector(
-      `[data-row="${attX}"][data-column="${attY - 1}"]`
-    );
-    let nodeBeforePrevious = document.querySelector(
-      `[data-row="${attX}"][data-column="${attY - 2}"]`
-    );
-    let nodeNext = document.querySelector(
-      `[data-row="${attX}"][data-column="${attY + 1}"]`
-    );
-    let nodeAfterNext = document.querySelector(
-      `[data-row="${attX}"][data-column="${attY + 2}"]`
-    );
-    return [nodeBeforePrevious, nodePrevious, nodeNext, nodeAfterNext];
+    if (active.classList.contains('reversed')) {
+      let nodePrevious = document.querySelector(
+        `[data-row="${attX - 1}"][data-column="${attY}"]`
+      );
+      let nodeBeforePrevious = document.querySelector(
+        `[data-row="${attX - 2}"][data-column="${attY}"]`
+      );
+      let nodeNext = document.querySelector(
+        `[data-row="${attX + 1}"][data-column="${attY}"]`
+      );
+      let nodeAfterNext = document.querySelector(
+        `[data-row="${attX + 2}"][data-column="${attY}"]`
+      );
+      return [nodeBeforePrevious, nodePrevious, nodeNext, nodeAfterNext];
+    } else {
+      let nodePrevious = document.querySelector(
+        `[data-row="${attX}"][data-column="${attY - 1}"]`
+      );
+      let nodeBeforePrevious = document.querySelector(
+        `[data-row="${attX}"][data-column="${attY - 2}"]`
+      );
+      let nodeNext = document.querySelector(
+        `[data-row="${attX}"][data-column="${attY + 1}"]`
+      );
+      let nodeAfterNext = document.querySelector(
+        `[data-row="${attX}"][data-column="${attY + 2}"]`
+      );
+      return [nodeBeforePrevious, nodePrevious, nodeNext, nodeAfterNext];
+    }
   },
-  handle(active, e) {
+  handleShip(active, e) {
     let nodesAround = this.mapActive(active, e);
     if (active.classList.contains('carrier'))
       if (!nodesAround.includes(null))
