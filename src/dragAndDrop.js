@@ -1,5 +1,4 @@
 import dropHandler from './eventDropHandler';
-import reverseDropHandler from './reverseDropHandler';
 
 export default {
   handleDragStart(e) {
