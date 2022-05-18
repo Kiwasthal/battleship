@@ -1,5 +1,7 @@
 import shipFactory from './shipFactory';
 
+//THIS WORKS
+
 export default {
   getCoordinatesX(board, check) {
     let coordinatesX = [];
@@ -23,6 +25,7 @@ export default {
     });
     return coordinatesY;
   },
+
   getRandomShip(length, board, check) {
     let coordinatesX = this.getCoordinatesX(board, check);
     let coordinatesY = this.getCoordinatesY(board, check);

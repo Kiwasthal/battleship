@@ -195,7 +195,7 @@ body {
   position: absolute;
   box-shadow: inset 0 0 10px #000000;
   transition: all 200ms ease;
-  z-index: 1001;
+  z-index: 0;
 }
 
 .slide-open {
@@ -227,6 +227,8 @@ body {
 .destroyer {
   display: flex;
   cursor: move;
+  z-index: 9999;
+  position: static;
 }
 
 .reversed {
@@ -261,6 +263,8 @@ body {
   display: block;
   transition: all 300ms ease-in-out;
   border-radius: 10px;
+
+  z-index: 0;
 }
 
 .startGame {

@@ -18,9 +18,10 @@ const PlayerActions = {
         this
       )
     );
-    if (board.areAllShipsDestroyed()) console.log('You Won');
+    if (board.areAllShipsDestroyed()) alert('You Win');
     if (otherBoard == null) return;
     this.aiAttackBoard(otherBoard);
+    if (otherBoard.areAllShipsDestroyed()) alert('You lost');
   },
   aiAttackBoard(Gameboard) {
     let attackTiles = document.querySelectorAll('.playerTile');
@@ -39,6 +40,7 @@ const PlayerActions = {
         attackNode = tile;
     });
     Gameboard.receivesHit([attackX, attackY], attackNode);
+    console.log(Gameboard);
   },
   generateShipPositions() {
     shipPositionGenerator.registerCarrierInBoard(this.Gameboard.board);

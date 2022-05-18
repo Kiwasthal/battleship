@@ -1,6 +1,7 @@
 import getCoordinates from './getGridCoordinates';
 import shipFactory from './shipFactory';
 
+//From player placed ships
 export default {
   getsCoordinatesOfPlacedShipsFromDom() {
     let carrier = {
@@ -29,13 +30,14 @@ export default {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().carrier.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().carrier.y;
     let carrier = shipFactory(5, coordinatesX, coordinatesY);
-    if (carrier.positionX.length === 1) carrier.reversed = true;
+    if (carrier.positionY.length === 1) carrier.reversed = true;
     return carrier;
   },
   createBattleship() {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().battleship.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().battleship.y;
     let battleship = shipFactory(4, coordinatesX, coordinatesY);
+    if (battleship.positionY.length === 1) battleship.reversed = true;
 
     return battleship;
   },
@@ -43,6 +45,7 @@ export default {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().cruiser.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().cruiser.y;
     let cruiser = shipFactory(3, coordinatesX, coordinatesY);
+    if (cruiser.positionY.length === 1) cruiser.reversed = true;
 
     return cruiser;
   },
@@ -50,6 +53,7 @@ export default {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().submarine.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().submarine.y;
     let submarine = shipFactory(3, coordinatesX, coordinatesY);
+    if (submarine.positionY.length === 1) submarine.reversed = true;
 
     return submarine;
   },
@@ -57,6 +61,7 @@ export default {
     let coordinatesX = this.getsCoordinatesOfPlacedShipsFromDom().destroyer.x;
     let coordinatesY = this.getsCoordinatesOfPlacedShipsFromDom().destroyer.y;
     let destroyer = shipFactory(2, coordinatesX, coordinatesY);
+    if (destroyer.positionY.length === 1) destroyer.reversed = true;
 
     return destroyer;
   },

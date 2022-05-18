@@ -8,7 +8,8 @@ const boardActions = {
   },
   fillsBoardWithShips() {
     for (let ship of this.shipLibrary)
-      for (let y of ship.positionY) this.board[ship.positionX[0]][y] = 'ship';
+      for (let x of ship.positionX)
+        for (let y of ship.positionY) this.board[x][y] = 'ship';
   },
   receivesHit(coordinatesOfHit, tile) {
     let coordinatesX = coordinatesOfHit[0];

@@ -1,4 +1,5 @@
 export default {
+  //From random coordinates
   generateRandomCoordinates(min, max) {
     let oneOrZero = Math.random() > 0.5 ? 1 : 0;
     if (oneOrZero === 0) {
