@@ -23,19 +23,19 @@ function Drag(subject) {
   subject.addEventListener('drag', function (e) {
     if (subject.classList.contains('carrier')) {
       var useX = e.x + 60,
-        useY = e.y - 180;
+        useY = e.y - 140;
     } else if (subject.classList.contains('battleship')) {
       var useX = e.x + 85,
-        useY = e.y - 80;
+        useY = e.y - 240;
     } else if (subject.classList.contains('cruiser')) {
       var useX = e.x + 75,
-        useY = e.y + 20;
+        useY = e.y - 350;
     } else if (subject.classList.contains('submarine')) {
       var useX = e.x + 72,
-        useY = e.y + 120;
+        useY = e.y - 420;
     } else if (subject.classList.contains('destroyer')) {
       var useX = e.x + 72,
-        useY = e.y + 200;
+        useY = e.y - 540;
     }
 
     if (useX === 0 && useY === 0) {
