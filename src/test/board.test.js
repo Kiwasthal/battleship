@@ -1,8 +1,11 @@
 import boardFactory from '../boardFactory';
 import Ship from '../shipFactory';
+import generateBoardShips from '../generateBoardShips';
+import animations from '../animations';
 
 let gameboard = boardFactory();
 let fooShip = Ship(3, [2, 3, 4], [1]);
+let barShip = Ship(4, [2], [5, 6, 7, 8]);
 
 describe('board', () => {
   test('board length', () => {
@@ -11,43 +14,29 @@ describe('board', () => {
   test('board length proper', () => {
     expect(gameboard.board[9].length).toBe(10);
   });
-  gameboard.cataloguesShips(fooShip);
-  it('properly catalogues ships', () => {
-    expect(gameboard.shipLibrary).toEqual([fooShip]);
-  });
-  gameboard.fillsBoardWithShips();
-  it('propery places ships in a copy of the board', () => {
-    expect(
-      gameboard.board[2][1] && gameboard.board[3][1] && gameboard.board[4][1]
-    ).toEqual('ship');
-  });
+  gameboard.shipLibrary.push(fooShip);
+  gameboard.shipLibrary.push(barShip);
   it('works if no ships are yet destroyed', () => {
     expect(gameboard.areAllShipsDestroyed()).toBe(false);
   });
-  gameboard.receivesHit([3, 1]);
-  it('properly receives a hit', () => {
-    expect(gameboard.board[3][1]).toEqual('X');
+
+  gameboard.fillsBoardWithShips();
+  it('properly fills board with ships from library', () => {
+    expect(gameboard.board[3][1]).toBe('ship');
   });
-  it('passes the hit coordinates to the correct ship', () => {
-    expect(fooShip.printed).toEqual(['', 'X', '']);
+  it('works with reversed ships', () => {
+    expect(gameboard.board[2][6]).toBe('ship');
   });
-  it('properly handles a ship which is not yet sunk', () => {
-    fooShip.toggleIsSunkStatus();
-    expect(fooShip.isSunk).toBe(false);
-  });
-  gameboard.receivesHit([0, 0]);
-  it('properly handles a miss', () => {
-    expect(gameboard.board[0][0]).toEqual('miss');
-  });
+
   it('can sink a ship', () => {
-    gameboard.receivesHit([2, 1]);
-    gameboard.receivesHit([4, 1]);
-    expect(fooShip.printed).toEqual(['X', 'X', 'X']);
+    fooShip.reversed = true;
+    gameboard.registersHit(2, 1);
+    gameboard.registersHit(3, 1);
+    gameboard.registersHit(4, 1);
     expect(fooShip.isSunk).toBe(true);
   });
-  it('can check whether all ships are destroyed', () => {
-    gameboard.receivesHit([2, 1]);
-    gameboard.receivesHit([4, 1]);
+  gameboard.shipLibrary.pop();
+  it('can detect if all ships are destroyed', () => {
     expect(gameboard.areAllShipsDestroyed()).toBe(true);
   });
 });

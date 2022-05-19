@@ -1,23 +1,12 @@
 import Player from '../Player';
 
+describe('player', () => {
+  let player = Player(true, false, 'Captain');
 
-beforeEach(() => {
-    let player = Player(true,false,'Captain')
-    let testBoard = {
-        opponentBoard:[],
-        receiveShot: jest.fn((loc) => {
-            testBoard.opponentBoard[loc] = 'miss'
-            return true
-        }),
-        opponentBoard: jest.fn(() => {
-            return testBoard.opponentBoard
-        }),
-    }
-    const arr = [];
-    it('creates Player with correct name'), () => {
-        expect(player.name).toBe('Captain')
-    }
-    it('expects player no to be AI',) , () => {
-        expect(player.isAi).toBe('false')
-    }
-})
+  test('player name', () => {
+    expect(player.name).toBe('Captain');
+  });
+  test('If player is playing', () => {
+    expect(player.isPlaying).toBe(true);
+  });
+});

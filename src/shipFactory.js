@@ -1,6 +1,6 @@
 const ShipActions = {
   getPositionX() {
-  return this.positionX;
+    return this.positionX;
   },
   getPositionY() {
     return this.positionY;
