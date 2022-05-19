@@ -1,14 +1,14 @@
-let createBattleShipHeader = container => {
+const createBattleShipHeader = (container) => {
   const battleShipHeader = document.createElement('h2');
   battleShipHeader.textContent = 'Battleship';
   battleShipHeader.classList.add('main-header');
   container.appendChild(battleShipHeader);
 };
 
-let createLetterLabels = (container, className) => {
-  let lettersContainer = document.createElement('div');
-  for (let i = 65; i < 75; i++) {
-    let index = document.createElement('p');
+const createLetterLabels = (container, className) => {
+  const lettersContainer = document.createElement('div');
+  for (let i = 65; i < 75; i += 1) {
+    const index = document.createElement('p');
     index.classList.add('letter-index');
     index.textContent = String.fromCharCode(i);
     lettersContainer.appendChild(index);
@@ -17,10 +17,10 @@ let createLetterLabels = (container, className) => {
   container.appendChild(lettersContainer);
 };
 
-let createNumberLabels = (container, className) => {
-  let numbersContainer = document.createElement('div');
-  for (let i = 1; i <= 10; i++) {
-    let index = document.createElement('p');
+const createNumberLabels = (container, className) => {
+  const numbersContainer = document.createElement('div');
+  for (let i = 1; i <= 10; i += 1) {
+    const index = document.createElement('p');
     index.classList.add('number-index');
     index.textContent = `${i}`;
     numbersContainer.appendChild(index);
@@ -29,11 +29,27 @@ let createNumberLabels = (container, className) => {
   container.appendChild(numbersContainer);
 };
 
-let createShipContainer = container => {
-  let openDrawer = document.createElement('div');
+const createDraggedShips = (length, className) => {
+  const shipContainer = document.createElement('div');
+  const inner = document.createElement('div');
+  inner.classList.add('inner');
+  shipContainer.appendChild(inner);
+  shipContainer.draggable = 'true';
+  shipContainer.classList.add(className);
+  shipContainer.classList.add('ships');
+  for (let i = 0; i < length; i++) {
+    const shipCell = document.createElement('div');
+    shipCell.classList.add('ship-cell');
+    shipContainer.appendChild(shipCell);
+  }
+  return shipContainer;
+};
+
+const createShipContainer = (container) => {
+  const openDrawer = document.createElement('div');
   openDrawer.classList.add('open-drawer');
   container.appendChild(openDrawer);
-  let shipContainer = document.createElement('div');
+  const shipContainer = document.createElement('div');
   shipContainer.classList.add('shelf');
   shipContainer.appendChild(createDraggedShips(5, 'carrier'));
   shipContainer.appendChild(createDraggedShips(4, 'battleship'));
@@ -43,45 +59,29 @@ let createShipContainer = container => {
   container.appendChild(shipContainer);
 };
 
-let createDraggedShips = (length, className) => {
-  let shipContainer = document.createElement('div');
-  let inner = document.createElement('div');
-  inner.classList.add('inner');
-  shipContainer.appendChild(inner);
-  shipContainer.draggable = 'true';
-  shipContainer.classList.add(className);
-  shipContainer.classList.add('ships');
-  for (let i = 0; i < length; i++) {
-    let shipCell = document.createElement('div');
-    shipCell.classList.add('ship-cell');
-    shipContainer.appendChild(shipCell);
-  }
-  return shipContainer;
-};
-
-let createLabels = container => {
+const createLabels = (container) => {
   createLetterLabels(container, 'top-left-letter-index');
   createLetterLabels(container, 'bottom-left-letter-index');
   createNumberLabels(container, 'top-number-index');
   createNumberLabels(container, 'bottom-number-index');
 };
 
-let createButton = container => {
-  let button = document.createElement('button');
+const createButton = (container) => {
+  const button = document.createElement('button');
   button.classList.add('startGame');
   button.textContent = 'Start';
   container.appendChild(button);
 };
 
-let createReverseButton = container => {
-  let reverseButton = document.createElement('button');
+const createReverseButton = (container) => {
+  const reverseButton = document.createElement('button');
   reverseButton.classList.add('reverseShip');
   reverseButton.textContent = 'REVERSE';
   container.appendChild(reverseButton);
 };
 
 export default () => {
-  let container = document.querySelector('.container');
+  const container = document.querySelector('.container');
   createBattleShipHeader(container);
   createLabels(container);
   createShipContainer(container);

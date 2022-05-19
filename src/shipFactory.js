@@ -1,12 +1,12 @@
 const ShipActions = {
   getPositionX() {
-    return this.positionX;
+  return this.positionX;
   },
   getPositionY() {
     return this.positionY;
   },
   isDestroyed() {
-    return this.printed.includes('') ? false : true;
+    return !this.printed.includes('');
   },
   toggleIsSunkStatus() {
     if (this.isDestroyed()) this.isSunk = true;
@@ -14,7 +14,7 @@ const ShipActions = {
 };
 
 export default (length, positionX, positionY) => {
-  let ship = Object.create(ShipActions);
+  const ship = Object.create(ShipActions);
   ship.length = length;
   ship.isSunk = false;
   ship.positionX = positionX;
