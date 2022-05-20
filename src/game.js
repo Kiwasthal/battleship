@@ -4,6 +4,7 @@ import { renderGrid } from './renderGrid';
 import animator from './animations';
 import dragAndDropHandler from './dragAndDrop';
 import createDragElements from './dragFactory';
+import modalHandling from './modalHandling';
 
 export default (() => {
   //Initialize DOM setup

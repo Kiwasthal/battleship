@@ -1,6 +1,7 @@
 import boardFactory from './boardFactory';
 import shipPositionGenerator from './shipPositionGenerator';
 import randomShipGenerator from './createShipsFromRandomBoard';
+import modalHandling from './modalHandling';
 
 const PlayerActions = {
   attackBoard(board, otherBoard) {
@@ -18,10 +19,10 @@ const PlayerActions = {
         this
       )
     );
-    if (board.areAllShipsDestroyed()) alert('You Win');
+    if (board.areAllShipsDestroyed()) modalHandling.displayWinningModal();
     if (otherBoard == null) return;
     this.aiAttackBoard(otherBoard);
-    if (otherBoard.areAllShipsDestroyed()) alert('You lost');
+    if (otherBoard.areAllShipsDestroyed()) modalHandling.displayLoosingModal();
   },
   aiAttackBoard(Gameboard) {
     let attackTiles = document.querySelectorAll('.playerTile');
