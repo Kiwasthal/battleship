@@ -1,4 +1,6 @@
 export default {
+  //The grid is created with datasets indicating the position of each cell, corresponding to a two dimensional array
+  //Used to correlate the board property of the Gameboard object with the DOM
   getCoordinatesX(check) {
     let placedTiles = document.querySelectorAll(check);
     let myCarrierCoordinatesX = [];

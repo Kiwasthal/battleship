@@ -1,4 +1,4 @@
-const renderGrid = (classList) => {
+const renderGrid = classList => {
   const container = document.querySelector('.container');
   const createGridLeft = document.createElement('div');
   createGridLeft.classList.add(classList);
@@ -18,5 +18,4 @@ const renderGrid = (classList) => {
     }
   }
 };
-
 export { renderGrid };

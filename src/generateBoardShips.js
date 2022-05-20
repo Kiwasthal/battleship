@@ -3,6 +3,7 @@ import shipFactory from './shipFactory';
 
 //From player placed ships
 export default {
+  //Translates the grid-placed ships to coordinates used to create Ships objects
   getsCoordinatesOfPlacedShipsFromDom() {
     let carrier = {
       x: getCoordinates.getCoordinatesX('.carrierPlaced'),

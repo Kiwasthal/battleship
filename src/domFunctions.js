@@ -1,4 +1,4 @@
-const createBattleShipHeader = (container) => {
+const createBattleShipHeader = container => {
   const battleShipHeader = document.createElement('h2');
   battleShipHeader.textContent = 'Battleship';
   battleShipHeader.classList.add('main-header');
@@ -45,7 +45,7 @@ const createDraggedShips = (length, className) => {
   return shipContainer;
 };
 
-const createShipContainer = (container) => {
+const createShipContainer = container => {
   const openDrawer = document.createElement('div');
   openDrawer.classList.add('open-drawer');
   container.appendChild(openDrawer);
@@ -59,21 +59,21 @@ const createShipContainer = (container) => {
   container.appendChild(shipContainer);
 };
 
-const createLabels = (container) => {
+const createLabels = container => {
   createLetterLabels(container, 'top-left-letter-index');
   createLetterLabels(container, 'bottom-left-letter-index');
   createNumberLabels(container, 'top-number-index');
   createNumberLabels(container, 'bottom-number-index');
 };
 
-const createButton = (container) => {
+const createButton = container => {
   const button = document.createElement('button');
   button.classList.add('startGame');
   button.textContent = 'Start';
   container.appendChild(button);
 };
 
-const createReverseButton = (container) => {
+const createReverseButton = container => {
   const reverseButton = document.createElement('button');
   reverseButton.classList.add('reverseShip');
   reverseButton.textContent = 'REVERSE';

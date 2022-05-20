@@ -6,6 +6,7 @@ import dragAndDropHandler from './dragAndDrop';
 import createDragElements from './dragFactory';
 
 export default (() => {
+  //Initialize DOM setup
   const onStartUp = () => {
     createDisplay();
     renderGrid('player-grid');
@@ -18,37 +19,37 @@ export default (() => {
       document.querySelectorAll('.playerTile')
     );
     createDragElements();
+    document.querySelector('.reverseShip').addEventListener('dragenter', () => {
+      document.querySelector('.dragging').classList.toggle('reversed');
+    });
   };
-  onStartUp();
+  onStartUp(); //Calling function to create Display
+
+  //Run Game is run when the user click the start Button , run through the combining methods of the Player Object
+  //And the Gameboard - ship object contained within
+  let runGame = () => {
+    document.querySelector('.startGame').classList.add('minify');
+    player1.Gameboard.cataloguesShips();
+    player1.Gameboard.fillsBoardWithShips();
+    player2.generateShipPositions();
+    player2.registerRandomShips();
+    player1.attackBoard(player2.Gameboard, null);
+    document.querySelectorAll('.computerTile').forEach(
+      tile => {
+        tile.addEventListener(
+          'click',
+          () => player1.attackBoard(player2.Gameboard, player1.Gameboard),
+          { once: true }
+        );
+      },
+      { once: true }
+    );
+  };
 
   //--------------------------------------------------------------------------
 
-  document.querySelector('.reverseShip').addEventListener('dragenter', () => {
-    document.querySelector('.dragging').classList.toggle('reversed');
-  });
-
+  //Creating Players before running the mainGame
   let player1 = Player(true, false, 'captain');
-  let player2 = Player(true, false, 'ai');
-
-  document.querySelector('.startGame').addEventListener(
-    'click',
-    e => {
-      document.querySelector('.startGame').classList.add('minify');
-      player1.Gameboard.cataloguesShips();
-      player1.Gameboard.fillsBoardWithShips();
-      player2.generateShipPositions();
-      player2.registerRandomShips();
-      player1.attackBoard(player2.Gameboard, null);
-      document.querySelectorAll('.computerTile').forEach(tile => {
-        tile.addEventListener(
-          'click',
-          () => {
-            player1.attackBoard(player2.Gameboard, player1.Gameboard);
-          },
-          { once: true }
-        );
-      });
-    },
-    { once: true }
-  );
+  let player2 = Player(true, true, 'ai');
+  document.querySelector('.startGame').addEventListener('click', runGame);
 })();
