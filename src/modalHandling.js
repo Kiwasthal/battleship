@@ -6,7 +6,7 @@ export default {
     this.getModal().showModal();
   },
   closeModal() {
-    this.getModal().closeModal();
+    this.getModal().close();
   },
   getModalHeader() {
     return document.querySelector('.winnerMsg');

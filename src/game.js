@@ -4,6 +4,7 @@ import { renderGrid } from './renderGrid';
 import animator from './animations';
 import dragAndDropHandler from './dragAndDrop';
 import createDragElements from './dragFactory';
+import modalHandling from './modalHandling';
 
 export default (() => {
   //Initialize DOM setup
@@ -28,6 +29,8 @@ export default (() => {
   //Run Game is run when the user click the start Button , run through the combining methods of the Player Object
   //And the Gameboard - ship object contained within
   let runGame = () => {
+    let player1 = Player(true, false, 'captain');
+    let player2 = Player(true, true, 'ai');
     document.querySelector('.startGame').classList.add('minify');
     player1.Gameboard.cataloguesShips();
     player1.Gameboard.fillsBoardWithShips();
@@ -44,12 +47,21 @@ export default (() => {
       },
       { once: true }
     );
+    let reset = document.querySelector('.resetGame');
+    reset.addEventListener('click', resetGame);
   };
 
+  let resetGame = () => {
+    const container = document.querySelector('.container');
+    console.log(container);
+    while (container.firstChild) {
+      container.removeChild(container.lastChild);
+    }
+    onStartUp();
+    modalHandling.closeModal();
+    document.querySelector('.startGame').addEventListener('click', runGame);
+  };
   //--------------------------------------------------------------------------
 
-  //Creating Players before running the mainGame
-  let player1 = Player(true, false, 'captain');
-  let player2 = Player(true, true, 'ai');
   document.querySelector('.startGame').addEventListener('click', runGame);
 })();

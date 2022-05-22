@@ -26,10 +26,10 @@ export default {
     e.target.classList.remove('over');
   },
   handleDrop(e) {
-    e.preventDefault(e);
+    e.target.classList.remove('over');
+    e.preventDefault();
     let active = document.querySelector('.dragging');
     dropHandler.handleShip(active, e);
-    e.target.classList.remove('over');
     dropHandler.checkIfAllShipsPlaced();
     document.querySelector('.reverseShip').classList.remove('scaleNormal');
   },

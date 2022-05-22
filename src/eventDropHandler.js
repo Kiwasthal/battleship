@@ -37,11 +37,9 @@ export default {
     if (active.classList.contains('carrier'))
       if (!nodesAround.includes(null))
         nodesAround.map(node => node.classList.remove('over'));
-
-    if (active.classList.contains('battleship')) {
-      if (!nodesAround.slice(1, 4).includes(null));
-      nodesAround.slice(1, 4).map(node => node.classList.remove('over'));
-    }
+    if (active.classList.contains('battleship'))
+      if (!nodesAround.slice(1, 4).includes(null))
+        nodesAround.slice(1, 4).map(node => node.classList.remove('over'));
     if (
       active.classList.contains('cruiser') ||
       active.classList.contains('submarine')

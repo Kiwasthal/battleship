@@ -66,6 +66,7 @@ export default {
 
     return destroyer;
   },
+
   createShips() {
     return [
       this.createCarrier(),

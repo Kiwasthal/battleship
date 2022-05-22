@@ -6,8 +6,9 @@ const boardActions = {
   //Taking information from the generateBoardShips object it detects the ships placed on the grid and catalogues
   //them inside the object's ship library
   cataloguesShips() {
-    const ships = generateBoardShips.createShips();
-    ships.forEach(ship => this.shipLibrary.push(ship));
+    generateBoardShips
+      .createShips()
+      .forEach(ship => this.shipLibrary.push(ship));
   },
   //Registers the ships in an two dimensional array (property of Gameboard Object)
   fillsBoardWithShips() {
@@ -64,7 +65,7 @@ const boardActions = {
           if (y == coordinatesY && x == coordinatesX)
             if (ship.reversed) ship.printed[ship.positionX.indexOf(x)] = 'X';
             else ship.printed[ship.positionY.indexOf(y)] = 'X';
-          ship.toggleIsSunkStatus();
+          ship.toggleIsSunkStatus(); //Checks if the ship has sunk after the his is registered
         }
   },
 };

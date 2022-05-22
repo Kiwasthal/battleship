@@ -5,8 +5,7 @@ import modalHandling from './modalHandling';
 
 const PlayerActions = {
   attackBoard(board, otherBoard) {
-    let attackTiles = document.querySelectorAll('.computerTile');
-    attackTiles.forEach(tile =>
+    document.querySelectorAll('.computerTile').forEach(tile =>
       tile.addEventListener(
         'click',
         function () {
@@ -25,6 +24,7 @@ const PlayerActions = {
     if (otherBoard.areAllShipsDestroyed()) modalHandling.displayLoosingModal();
   },
   aiAttackBoard(Gameboard) {
+    console.log(Gameboard);
     let attackTiles = document.querySelectorAll('.playerTile');
     let attackX;
     let attackY;
@@ -41,7 +41,6 @@ const PlayerActions = {
         attackNode = tile;
     });
     Gameboard.receivesHit([attackX, attackY], attackNode);
-    console.log(Gameboard);
   },
   generateShipPositions() {
     shipPositionGenerator.registerCarrierInBoard(this.Gameboard.board);
