@@ -24,7 +24,6 @@ const PlayerActions = {
     if (otherBoard.areAllShipsDestroyed()) modalHandling.displayLoosingModal();
   },
   aiAttackBoard(Gameboard) {
-    console.log(Gameboard);
     let attackTiles = document.querySelectorAll('.playerTile');
     let attackX;
     let attackY;

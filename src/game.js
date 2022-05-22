@@ -53,7 +53,6 @@ export default (() => {
 
   let resetGame = () => {
     const container = document.querySelector('.container');
-    console.log(container);
     while (container.firstChild) {
       container.removeChild(container.lastChild);
     }
